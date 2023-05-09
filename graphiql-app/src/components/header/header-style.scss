@@ -1,0 +1,20 @@
+$brown-color: #a52a2a;
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 5px 2%;
+  background-color: $brown-color;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
