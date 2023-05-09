@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from '../features/apiSlice';
 import { useAppDispatch, useAppSelector } from '../utils/hooks';
+import RequestEditor from '../components/request-editor';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
@@ -33,6 +34,9 @@ export default function MainPage() {
     <>
       <div>
         <h1>MainPage</h1>
+        <div className="request-editor-container">
+          <RequestEditor />
+        </div>
         <button onClick={handleClick}>Request</button>
       </div>
       <p>{JSON.stringify(currentData)}</p>
