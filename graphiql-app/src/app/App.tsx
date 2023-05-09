@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useScroll } from 'framer-motion';
+
 import ErrorPage from '../routes/error-page';
 import VelcomePage from '../routes/velcome-page';
 import MainPage from '../routes/main-page';
-import Header from '../components/header/index';
+import Header from '../components/header';
 import Footer from '../components/footer';
-
-import { useScroll } from 'framer-motion';
 
 export default function App() {
   const { scrollY } = useScroll();

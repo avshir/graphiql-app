@@ -3,9 +3,9 @@ import './header-style.scss';
 import { NavLink } from 'react-router-dom';
 import { useTransform, motion, MotionValue } from 'framer-motion';
 
-import Logo from './logo/index';
-import Sign from './sign/index';
-import Localization from './localization/index';
+import Logo from './logo';
+import Sign from './sign';
+import Localization from './localization';
 
 interface HeaderProps {
   scrollY: MotionValue<number>;
