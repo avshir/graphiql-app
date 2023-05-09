@@ -2,10 +2,14 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import 'ace-builds/src-noconflict/ext-language_tools';
+import { useAppDispatch } from '../../utils/hooks';
+import { setRequest } from '../../features/requestSlice';
 
 export default function RequestEditor() {
+  const dispatch = useAppDispatch();
+
   const onChange = (value: string) => {
-    console.log(value);
+    dispatch(setRequest(value));
   };
 
   return (
