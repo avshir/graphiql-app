@@ -1,5 +1,5 @@
 import './response-section.scss';
-import { useAppSelector } from "../../utils/hooks";
+import { useAppSelector } from '../../utils/hooks';
 import { useEffect, useState } from 'react';
 
 export default function ResponseSection() {
@@ -12,7 +12,7 @@ export default function ResponseSection() {
 
   return (
     <>
-      <pre>{JSON.stringify(currentData)}</pre>
+      <pre>{JSON.stringify(currentData, null, ' ')}</pre>
     </>
   );
 }

@@ -1,5 +1,4 @@
 import './main-page.scss';
-import { useEffect, useState } from 'react';
 import { fetchData } from '../../features/apiSlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import RequestEditor from '../../components/request-editor';
@@ -9,10 +8,8 @@ import ResponseSection from '../../components/response-section';
 export default function MainPage() {
   const dispatch = useAppDispatch();
   const requestQuery = useAppSelector((state) => state.request.value);
-  
-  const handleClick = async (): Promise<void> => {
-    console.log(requestQuery)
 
+  const handleClick = async (): Promise<void> => {
     dispatch(fetchData(requestQuery));
   };
 

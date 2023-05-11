@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const requestSlice = createSlice({
   name: 'request',
