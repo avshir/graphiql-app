@@ -1,11 +1,18 @@
 import './response-section.scss';
-import { useAppDispatch } from "../../utils/hooks";
+import { useAppSelector } from "../../utils/hooks";
+import { useEffect, useState } from 'react';
 
 export default function ResponseSection() {
-  const dispatch = useAppDispatch();
+  const data = useAppSelector((state) => state.data.list);
+  const [currentData, setCurrentData] = useState('');
+
+  useEffect(() => {
+    setCurrentData(data);
+  }, [data]);
 
   return (
     <>
+      <pre>{JSON.stringify(currentData)}</pre>
     </>
   );
 }

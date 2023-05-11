@@ -8,14 +8,8 @@ import ResponseSection from '../../components/response-section';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.data.list);
   const requestQuery = useAppSelector((state) => state.request.value);
-  const [currentData, setCurrentData] = useState('');
-
-  useEffect(() => {
-    setCurrentData(data);
-  }, [data]);
-
+  
   const handleClick = async (): Promise<void> => {
     console.log(requestQuery)
 
@@ -39,7 +33,6 @@ export default function MainPage() {
         </div>
         <button onClick={handleClick}>Request</button>
       </main>
-      <p>{JSON.stringify(currentData)}</p>
     </>
   );
 }
