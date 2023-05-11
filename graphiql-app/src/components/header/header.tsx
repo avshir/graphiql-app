@@ -17,7 +17,7 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
   const height = useTransform(scrollY, offsetY, heightSizes);
 
   return (
-    <motion.header className={'header'} style={{ height }}>
+    <motion.header className={'header navbar-dark bg-primary'} style={{ height }}>
       <div className={'header-content'}>
         <Logo></Logo>
         <Sign></Sign>
