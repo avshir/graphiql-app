@@ -19,7 +19,7 @@ export default function RequestEditor() {
       theme="solarized_dark"
       name="request_editor"
       onChange={onChange}
-      fontSize="14"
+      fontSize="16"
       height={'100%'}
       width={'100%'}
       showPrintMargin={false}

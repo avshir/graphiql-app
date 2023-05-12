@@ -2,7 +2,7 @@ import { AnyAction, PayloadAction, createAsyncThunk, createSlice } from '@reduxj
 
 const API_URL = 'https://countries.trevorblades.com/';
 
-export const fetchSchema = createAsyncThunk<string, string, { rejectValue: string }>(
+export const fetchSchema = createAsyncThunk<ISchema, string, { rejectValue: string }>(
   'schema/fetchSchema',
   async function (_, { rejectWithValue }) {
     const query = '{__schema{types{name,fields{name}}}}';
@@ -26,13 +26,17 @@ export const fetchSchema = createAsyncThunk<string, string, { rejectValue: strin
 );
 
 interface IResponseState {
-  list: string;
+  list: object;
   loading: boolean;
   error: string | null;
 }
 
+interface ISchema {
+  data: object;
+}
+
 const initialState: IResponseState = {
-  list: '',
+  list: {},
   loading: false,
   error: null,
 };
