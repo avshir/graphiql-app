@@ -12,13 +12,22 @@ export type Scalars = {
   Float: number;
 };
 
+// export type MainQuery = {
+//   continent: Array<Continent>;
+//   continents: Array<Continent>;
+//   country: Array<Country>;
+//   countries: Array<Country>;
+//   language: Array<Language>;
+//   languages: Array<Language>;
+// };
+
 export type MainQuery = {
-  continent: Array<Continent>;
-  continents: Array<Continent>;
-  country: Array<Country>;
-  countries: Array<Country>;
-  language: Array<Language>;
-  languages: Array<Language>;
+  continent: IFieldDatas[];
+  continents: IFieldDatas[];
+  country: IFieldDatas[];
+  countries: IFieldDatas[];
+  language: IFieldDatas[];
+  languages: IFieldDatas[];
 };
 
 export type Continent = {
@@ -78,5 +87,9 @@ export interface ISchema {
 
 export interface IField {
   name: string;
-  fields: [];
+  fields: IFieldDatas[];
+}
+
+export interface IFieldDatas {
+  name: string;
 }

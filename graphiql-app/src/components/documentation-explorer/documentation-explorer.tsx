@@ -2,12 +2,12 @@ import './documentation-explorer.scss';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { fetchSchema } from '../../features/schemaSlice';
-import { IField, ISchema, MainQuery } from './explorer-types';
+import { IField, IFieldDatas, ISchema, MainQuery } from './explorer-types';
 
 export default function DocumentationExplorer() {
   const dispatch = useAppDispatch();
   const dataSchema = useAppSelector((state) => state.schema.list) as ISchema;
-  const [apiData, setApiData] = useState({} as MainQuery);
+  const [apiDatas, setApiDatas] = useState({} as MainQuery);
 
   useEffect(() => {
     dispatch(fetchSchema(''));
@@ -33,15 +33,28 @@ export default function DocumentationExplorer() {
 
       //console.log(datas);
       console.log(mainQuery);
-      setApiData(mainQuery);
+      setApiDatas(mainQuery);
     }
   }, [dataSchema]);
 
   return (
     <>
       <div className="query-container">
-        {Object.keys(apiData).map((name: string, index: number) => (
-          <button key={index}>{`{ ${name} }`}</button>
+        {Object.keys(apiDatas).map((keyName: string, index1: number) => (
+          <label key={index1}>
+            {`{ ${keyName} } `}
+            <select>
+              <option value="default"></option>(
+              {apiDatas[keyName as keyof typeof apiDatas].map(
+                (data: IFieldDatas, index2: number) => (
+                  <option value={data.name} key={index2}>
+                    {data.name}
+                  </option>
+                )
+              )}
+              )
+            </select>
+          </label>
         ))}
       </div>
     </>
