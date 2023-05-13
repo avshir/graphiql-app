@@ -31,7 +31,7 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
   const sighOutBtn = isAuth ? <Sign handleClick={handlerSignOutBtn} /> : null;
 
   return (
-    <motion.header className={'header'} style={{ height }}>
+    <motion.header className={'header navbar-dark bg-primary'} style={{ height }}>
       <div className={'header-content'}>
         <Logo></Logo>
         {sighOutBtn}

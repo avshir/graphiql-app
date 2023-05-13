@@ -5,12 +5,12 @@ interface ISignProps {
   handleClick: () => void;
 }
 
-export default function Sign({ handleClick }: ISignProps) {
+export default function Sign() {
+  const { t } = useTranslation();
   return (
     <div className={'header-sign'}>
-      <button type="button" className="btn btn-secondary" onClick={handleClick}>
-        sign out
-        {/* {t('header.sign')} */}
+      <button type="button" className="btn btn-secondary">
+        {t('header.sign')}
       </button>
     </div>
   );
