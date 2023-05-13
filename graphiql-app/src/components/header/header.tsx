@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ scrollY, offsetY }: HeaderProps) {
-  const heightSizes = [200, 100];
+  const heightSizes = [150, 115];
   const height = useTransform(scrollY, offsetY, heightSizes);
 
   return (
