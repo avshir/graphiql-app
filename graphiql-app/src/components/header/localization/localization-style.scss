@@ -1,0 +1,32 @@
+$basic-transition: all 0.3s linear;
+
+.header-localization {
+  position: relative;
+}
+
+.header-dropdown {
+  width: 45px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    filter: invert(49%) sepia(94%) saturate(5188%) hue-rotate(294deg) brightness(96%) contrast(91%) drop-shadow(0 0 2px rgba(234, 57, 184, 0.9));
+    transition: $basic-transition;
+  }
+  img:hover {
+    filter: invert(32%) sepia(69%) saturate(2043%) hue-rotate(292deg) brightness(80%) contrast(95%);
+  }
+}
+
+.dropdown-menu > input:checked + .dropdown-item {
+  pointer-events: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.2), 0 0 1rem rgba(255, 255, 255, 0.3), 0 0 4rem rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+  right: 0;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
