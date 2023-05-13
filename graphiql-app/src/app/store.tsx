@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from '../features/apiSlice';
 import requestReducer from '../features/requestSlice';
+import userReducer from '../features/slices/userSlice';
 
 const store = configureStore({
   reducer: {
     data: dataReducer,
     request: requestReducer,
+    user: userReducer,
   },
 });
 

@@ -9,6 +9,7 @@ import './index.scss';
 import App from './app/App';
 import store from './app/store';
 import './i18n';
+import './firebase';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
