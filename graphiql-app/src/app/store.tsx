@@ -3,6 +3,7 @@ import dataReducer from '../features/apiSlice';
 import requestReducer from '../features/requestSlice';
 import schemaReducer from '../features/schemaSlice';
 import queryReducer from '../features/querySlice';
+import userReducer from '../features/slices/userSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     data: dataReducer,
     request: requestReducer,
     query: queryReducer,
+    user: userReducer,
   },
 });
 

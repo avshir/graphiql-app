@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'PoiretOne';
+  src: url(../../fonts/PoiretOne-Regular.ttf);
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -48,4 +53,9 @@ main {
   a:hover {
     color: brown;
   }
+}
+
+.request-editor-container {
+  height: 500px;
+  width: 300px;
 }
