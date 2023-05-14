@@ -97,3 +97,7 @@ export interface IFieldDatas {
 export interface IQueryRequest {
   [key: string]: string[];
 }
+
+export interface IVariables {
+  [key: string]: string;
+}

@@ -14,14 +14,14 @@ export default function VariablesEditor() {
 
   useEffect(() => {
     dispatch(setVariables(currentVariables));
-  }, [currentVariables]);
+  }, [dispatch, currentVariables]);
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
     const regexp = /(\w+)/gu;
     const variablesArray = value.match(regexp) as RegExpMatchArray;
     const variablesObj: IVariables = {};
-    
+
     if (!!variablesArray) {
       variablesArray.forEach((variable: string, index: number) => {
         if (index % 2 === 0) {
@@ -29,7 +29,7 @@ export default function VariablesEditor() {
         }
       });
     }
-    
+
     setCurrentVariables(variablesObj);
   };
 

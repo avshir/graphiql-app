@@ -5,19 +5,15 @@ import { fetchSchema } from '../../features/schemaSlice';
 import { IField, IFieldDatas, IQueryRequest, ISchema, MainQuery } from './explorer-types';
 import { saveQuery } from '../../features/querySlice';
 
-interface IVariables {
-  [key: string]: string;
-}
-
 export default function DocumentationExplorer() {
   const dispatch = useAppDispatch();
   const dataSchema = useAppSelector((state) => state.schema.list) as ISchema;
-  const variables = useAppSelector((state) => state.variables.value);
+  const variables = useAppSelector((state) => state.variables.value) as IQueryRequest;
 
   const [apiDatas, setApiDatas] = useState({} as MainQuery);
   const [summaryQuery, setSummaryQuery] = useState('');
   const [query, setQuery] = useState({} as IQueryRequest);
-  const [newVariables, setNewVariables] = useState({} as IVariables);
+  const [args, setArgs] = useState({} as IQueryRequest);
   const [stateClick, setStateClick] = useState(false);
 
   useEffect(() => {
@@ -77,6 +73,37 @@ export default function DocumentationExplorer() {
     }
   };
 
+  const handlerInputArguments = (event: ChangeEvent<HTMLInputElement>) => {
+    setStateClick(true);
+
+    const nameArguments: string = event.target.value;
+    const nameCategory = event.target.dataset.queryname as string;
+
+    if (nameCategory in args) {
+      const cloneFields = args[nameCategory];
+      const indexField: number = cloneFields.indexOf(nameArguments);
+
+      if (indexField >= 0) {
+        cloneFields.splice(indexField, 1);
+
+        if (cloneFields.length === 0) {
+          delete args[nameCategory];
+          setArgs(args);
+        } else {
+          args[nameCategory] = cloneFields;
+          setArgs(args);
+        }
+      } else {
+        const newFields = [...cloneFields, nameArguments];
+        args[nameCategory] = newFields;
+        setArgs(args);
+      }
+    } else {
+      args[nameCategory] = [nameArguments];
+      setArgs(args);
+    }
+  };
+
   useEffect(() => {
     setStateClick(false);
 
@@ -85,12 +112,20 @@ export default function DocumentationExplorer() {
     for (const category in query) {
       let categoryWithArgument = category;
 
-      // if (category === 'continent') {
-      //   categoryWithArgument = `${category} (${variables})`
-      // }
+      if (args[category]) {
+        const nameArgument = args[category][0];
+
+        if (category === 'continent' && nameArgument) {
+          categoryWithArgument = `${category}(${nameArgument}: )`;
+        }
+
+        if (!!variables[nameArgument]) {
+          categoryWithArgument = `${category}(${nameArgument}: "${variables[nameArgument]}")`;
+        }
+      }
 
       const oneQuery = `
-    ${category} {
+    ${categoryWithArgument} {
         ${query[category].join('\n        ')}
     }
 `;
@@ -101,14 +136,8 @@ export default function DocumentationExplorer() {
     const resultQuery = `query {${queries.join('')}}`;
 
     setSummaryQuery(resultQuery);
-
-    console.log(variables);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stateClick, variables]);
-
-  // useEffect(() => {
-  //   setNewVariables(newVariables);
-  // }, [variables]);
 
   useEffect(() => {
     dispatch(saveQuery(summaryQuery));
@@ -120,7 +149,25 @@ export default function DocumentationExplorer() {
         {Object.keys(apiDatas).map((queryName: string, index1: number) => (
           <div className="query-container" key={index1}>
             <div className="query-name">{`{ ${queryName} } `}</div>
-            {(queryName === 'continent') ? <span>Arguments:</span> : ''}
+            {queryName === 'continent' ? (
+              <div>
+                <span>Arguments:</span>
+                <div>
+                  <label className="query-item-label">
+                    <input
+                      type="checkbox"
+                      data-queryname={queryName as keyof typeof apiDatas}
+                      onChange={handlerInputArguments}
+                      value="code"
+                    />
+                    code
+                  </label>
+                </div>
+              </div>
+            ) : (
+              ''
+            )}
+
             <div className="query-list">
               <span>Fields:</span>
               {apiDatas[queryName as keyof typeof apiDatas].map(
