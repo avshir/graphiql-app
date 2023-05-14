@@ -48,8 +48,14 @@ export default function DocumentationExplorer() {
 
       if (indexField >= 0) {
         cloneFields.splice(indexField, 1);
-        query[nameCategory] = cloneFields;
-        setQuery(query);
+
+        if (cloneFields.length === 0) {
+          delete query[nameCategory];
+          setQuery(query);
+        } else {
+          query[nameCategory] = cloneFields;
+          setQuery(query);
+        }
       } else {
         const newFields = [...cloneFields, nameField];
         query[nameCategory] = newFields;
