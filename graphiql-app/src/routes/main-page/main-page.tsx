@@ -17,6 +17,7 @@ export default function MainPage() {
     <>
       <main className="main">
         <h1>MainPage</h1>
+        <button onClick={handleClick}>Request</button>
         <div className="graphql-container">
           <div className="documentation-explorer-container">
             <DocumentationExplorer />
@@ -28,7 +29,6 @@ export default function MainPage() {
             <ResponseSection />
           </div>
         </div>
-        <button onClick={handleClick}>Request</button>
       </main>
     </>
   );
