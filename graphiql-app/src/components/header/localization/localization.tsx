@@ -1,43 +1,59 @@
 import './localization-style.scss';
+import langIcon from '../../../assets/tongue.png';
 
-import { MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function Localization() {
+  const [isLangOpen, setLangOpen] = useState(false);
   const { i18n } = useTranslation();
-  const handleClick = (event: MouseEvent<HTMLLabelElement>) => {
-    const target = event.target as HTMLLabelElement;
-    if (target.htmlFor === 'btnradio1') {
-      i18n.changeLanguage('en');
+
+  const handleLangOpen = () => {
+    if (!isLangOpen) {
+      setLangOpen(true);
+    } else {
+      setLangOpen(false);
     }
-    if (target.htmlFor === 'btnradio2') {
+  };
+
+  const handleLangSwitch = (event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLLabelElement;
+    if (target.id === 'en') {
+      i18n.changeLanguage('en');
+      setLangOpen(false);
+    }
+    if (target.id === 'ru') {
       i18n.changeLanguage('ru');
+      setLangOpen(false);
     }
   };
 
   return (
-    <div className={'header-localization'}>
-      <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <div className="header-localization">
+      <div className="header-dropdown dropdown-toggle" onClick={handleLangOpen}>
+        <img src={langIcon} alt="tongue" />
+      </div>
+      <div className={`dropdown-menu ${isLangOpen ? 'show' : ''}`} onClick={handleLangSwitch}>
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
-          id="btnradio1"
+          name="btn-dropdown"
+          id="btn-dropdown1"
           autoComplete="off"
           defaultChecked
         />
-        <label className="btn btn-outline-light" htmlFor="btnradio1" onClick={handleClick}>
-          en
+        <label id="en" className="dropdown-item" htmlFor="btn-dropdown1">
+          english
         </label>
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
-          id="btnradio2"
+          name="btn-dropdown"
+          id="btn-dropdown2"
           autoComplete="off"
         />
-        <label className="btn btn-outline-light" htmlFor="btnradio2" onClick={handleClick}>
-          рус
+        <label id="ru" className="dropdown-item" htmlFor="btn-dropdown2">
+          русский
         </label>
       </div>
     </div>
