@@ -19,14 +19,22 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body,
+#root,
+.wrapper {
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'PoiretOne';
+}
+
 a {
   text-decoration: none;
   color: aliceblue;
-}
-
-// TODO => this style is for testing, delete when project is complete
-main {
-  height: 1400px;
 }
 
 .request-editor-container {

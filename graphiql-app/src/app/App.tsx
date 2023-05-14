@@ -14,7 +14,7 @@ export default function App() {
   const offsetY = [0, 500];
 
   return (
-    <div>
+    <div className="wrapper">
       <Header scrollY={scrollY} offsetY={offsetY} />
       <Routes>
         <Route path="/" element={<Navigate to="/welcome" />} />
