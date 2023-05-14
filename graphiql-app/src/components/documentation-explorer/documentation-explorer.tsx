@@ -5,12 +5,20 @@ import { fetchSchema } from '../../features/schemaSlice';
 import { IField, IFieldDatas, IQueryRequest, ISchema, MainQuery } from './explorer-types';
 import { saveQuery } from '../../features/querySlice';
 
+interface IVariables {
+  [key: string]: string;
+}
+
 export default function DocumentationExplorer() {
   const dispatch = useAppDispatch();
   const dataSchema = useAppSelector((state) => state.schema.list) as ISchema;
+  const variables = useAppSelector((state) => state.variables.value);
+
   const [apiDatas, setApiDatas] = useState({} as MainQuery);
   const [summaryQuery, setSummaryQuery] = useState('');
   const [query, setQuery] = useState({} as IQueryRequest);
+  const [newVariables, setNewVariables] = useState({} as IVariables);
+  const [stateClick, setStateClick] = useState(false);
 
   useEffect(() => {
     dispatch(fetchSchema(''));
@@ -39,6 +47,8 @@ export default function DocumentationExplorer() {
   }, [dataSchema]);
 
   const handlerInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setStateClick(true);
+
     const nameField: string = event.target.value;
     const nameCategory = event.target.dataset.queryname as string;
 
@@ -65,13 +75,23 @@ export default function DocumentationExplorer() {
       query[nameCategory] = [nameField];
       setQuery(query);
     }
+  };
+
+  useEffect(() => {
+    setStateClick(false);
 
     const queries = [];
 
-    for (const key in query) {
+    for (const category in query) {
+      let categoryWithArgument = category;
+
+      // if (category === 'continent') {
+      //   categoryWithArgument = `${category} (${variables})`
+      // }
+
       const oneQuery = `
-    ${key} {
-        ${query[key].join('\n        ')}
+    ${category} {
+        ${query[category].join('\n        ')}
     }
 `;
 
@@ -81,7 +101,14 @@ export default function DocumentationExplorer() {
     const resultQuery = `query {${queries.join('')}}`;
 
     setSummaryQuery(resultQuery);
-  };
+
+    console.log(variables);
+
+  }, [stateClick, variables]);
+
+  // useEffect(() => {
+  //   setNewVariables(newVariables);
+  // }, [variables]);
 
   useEffect(() => {
     dispatch(saveQuery(summaryQuery));
@@ -93,7 +120,9 @@ export default function DocumentationExplorer() {
         {Object.keys(apiDatas).map((queryName: string, index1: number) => (
           <div className="query-container" key={index1}>
             <div className="query-name">{`{ ${queryName} } `}</div>
+            {(queryName === 'continent') ? <span>Arguments:</span> : ''}
             <div className="query-list">
+              <span>Fields:</span>
               {apiDatas[queryName as keyof typeof apiDatas].map(
                 (data: IFieldDatas, index2: number) => (
                   <div className="query-item" key={index2}>

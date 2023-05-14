@@ -1,9 +1,8 @@
-.ace-editor {
-  display: none;
-}
-
 .request-editor {
   resize: none;
   height: 100%;
   width: 100%;
+  background: none;
+  color: var(--bs-body-color);
+  border: none;
 }

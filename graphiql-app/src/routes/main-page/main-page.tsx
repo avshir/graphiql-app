@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import RequestEditor from '../../components/request-editor';
 import DocumentationExplorer from '../../components/documentation-explorer';
 import ResponseSection from '../../components/response-section';
+import VariablesEditor from '../../components/variables-editor/variables-editor';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
@@ -19,15 +20,16 @@ export default function MainPage() {
         <h1>MainPage</h1>
         <button onClick={handleClick}>Request</button>
         <div className="graphql-container">
-          <div className="documentation-explorer-container">
+          <section className="documentation-explorer-container">
             <DocumentationExplorer />
-          </div>
-          <div className="request-editor-container">
+          </section>
+          <section className="request-editor-container">
             <RequestEditor />
-          </div>
-          <div className="response-section">
+            <VariablesEditor />
+          </section>
+          <section className="response-section">
             <ResponseSection />
-          </div>
+          </section>
         </div>
       </main>
     </>
