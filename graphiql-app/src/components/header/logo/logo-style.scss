@@ -8,18 +8,18 @@
   font-size: 70px;
   line-height: 80px;
   text-shadow: none;
-  // text-shadow: 0 0 1px rgba(255, 255, 255, 0.1), 0 0 1px rgba(255, 255, 255, 0.1), 0 0 1px rgba(255, 255, 255, 0.1);
-  background-image: linear-gradient(to right,
-     var(--bs-pink) 0%,
-     var(--bs-red) 20%,
-     var(--bs-yellow) 40%,
-     var(--bs-green) 60%,
-     var(--bs-blue) 80%,
-     var(--bs-cyan) 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+  background-image: linear-gradient(
+    to right,
+    var(--bs-pink) 0%,
+    var(--bs-red) 20%,
+    var(--bs-yellow) 40%,
+    var(--bs-green) 60%,
+    var(--bs-blue) 80%,
+    var(--bs-cyan) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 @media (max-width: 768px) {
