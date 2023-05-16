@@ -1,38 +1,29 @@
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-solarized_dark';
-import 'ace-builds/src-noconflict/ext-language_tools';
-import { useAppDispatch } from '../../utils/hooks';
+import './request-editor.scss';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { setRequest } from '../../features/requestSlice';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 export default function RequestEditor() {
   const dispatch = useAppDispatch();
+  const query = useAppSelector((state) => state.query.value) as string;
+  const [content, setContent] = useState('');
 
-  const onChange = (value: string) => {
-    dispatch(setRequest(value));
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const value = event.target.value;
+    setContent(value);
   };
 
+  useEffect(() => {
+    setContent(query);
+  }, [query]);
+
+  useEffect(() => {
+    dispatch(setRequest(content));
+  }, [dispatch, content]);
+
   return (
-    <AceEditor
-      placeholder="Write API request here!"
-      mode="json"
-      theme="solarized_dark"
-      name="request_editor"
-      onChange={onChange}
-      fontSize="14"
-      height={'100%'}
-      width={'100%'}
-      showPrintMargin={false}
-      showGutter={true}
-      highlightActiveLine={true}
-      setOptions={{
-        useWorker: false,
-        enableBasicAutocompletion: false,
-        enableLiveAutocompletion: false,
-        enableSnippets: false,
-        showLineNumbers: true,
-        tabSize: 2,
-      }}
-    />
+    <>
+      <textarea className="request-editor" value={content} onInput={handleChange} />
+    </>
   );
 }

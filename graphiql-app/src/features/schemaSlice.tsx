@@ -2,9 +2,11 @@ import { AnyAction, PayloadAction, createAsyncThunk, createSlice } from '@reduxj
 
 const API_URL = 'https://countries.trevorblades.com/';
 
-export const fetchData = createAsyncThunk<string, string, { rejectValue: string }>(
-  'data/fetchData',
-  async function (query, { rejectWithValue }) {
+export const fetchSchema = createAsyncThunk<ISchema, string, { rejectValue: string }>(
+  'schema/fetchSchema',
+  async function (_, { rejectWithValue }) {
+    const query = '{__schema{types{name,fields{name}}}}';
+
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
@@ -24,28 +26,32 @@ export const fetchData = createAsyncThunk<string, string, { rejectValue: string 
 );
 
 interface IResponseState {
-  list: string;
+  list: object;
   loading: boolean;
   error: string | null;
 }
 
+interface ISchema {
+  data: object;
+}
+
 const initialState: IResponseState = {
-  list: '',
+  list: {},
   loading: false,
   error: null,
 };
 
-export const apiSlice = createSlice({
-  name: 'data',
+export const schemaSlice = createSlice({
+  name: 'schema',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchData.pending, (state) => {
+      .addCase(fetchSchema.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchData.fulfilled, (state, action) => {
+      .addCase(fetchSchema.fulfilled, (state, action) => {
         state.list = action.payload;
         state.loading = false;
       })
@@ -56,7 +62,7 @@ export const apiSlice = createSlice({
   },
 });
 
-export default apiSlice.reducer;
+export default schemaSlice.reducer;
 
 function isError(action: AnyAction) {
   return action.type.endsWith('rejected');
