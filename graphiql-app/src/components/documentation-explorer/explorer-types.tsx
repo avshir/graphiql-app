@@ -92,6 +92,7 @@ export interface IField {
 
 export interface IFieldDatas {
   name: string;
+  __typename: string;
 }
 
 export interface IQueryRequest {

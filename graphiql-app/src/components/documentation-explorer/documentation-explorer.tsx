@@ -26,7 +26,10 @@ export default function DocumentationExplorer() {
 
       const result: IField[] = datas.filter(
         (elem: IField) =>
-          elem.name === 'Continent' || elem.name === 'Country' || elem.name === 'Language'
+          elem.name === 'Continent' ||
+          elem.name === 'Country' ||
+          elem.name === 'Language' ||
+          elem.name === 'State'
       );
 
       const mainQuery: MainQuery = {
@@ -38,6 +41,8 @@ export default function DocumentationExplorer() {
         languages: result[2].fields,
       };
 
+      console.log(datas);
+      console.log(mainQuery);
       setApiDatas(mainQuery);
     }
   }, [dataSchema]);
@@ -171,19 +176,35 @@ export default function DocumentationExplorer() {
             <div className="query-list">
               <span>Fields:</span>
               {apiDatas[queryName as keyof typeof apiDatas].map(
-                (data: IFieldDatas, index2: number) => (
-                  <div className="query-item" key={index2}>
-                    <label className="query-item-label">
-                      <input
-                        type="checkbox"
-                        data-queryname={queryName as keyof typeof apiDatas}
-                        onChange={handlerInput}
-                        value={data.name}
-                      />
-                      {data.name}
-                    </label>
-                  </div>
-                )
+                (data: IFieldDatas, index2: number) =>
+                  data.name === 'subdivisions' ? (
+                    ''
+                  ) : (
+                    <div className="query-item" key={index2}>
+                      <label className="query-item-label">
+                        <input
+                          type="checkbox"
+                          data-queryname={queryName as keyof typeof apiDatas}
+                          onChange={handlerInput}
+                          value={data.name}
+                        />
+                        {data.name}:{' '}
+                        {data.name === 'countries' ? (
+                          <span className="type-fields-string">{'{ Country }'}</span>
+                        ) : data.name === 'continent' ? (
+                          <span className="type-fields-string">{'{ Continent }'}</span>
+                        ) : data.name === 'languages' ? (
+                          <span className="type-fields-string">{'{ Language }'}</span>
+                        ) : data.name === 'states' ? (
+                          <span className="type-fields-string">{'{ State }'}</span>
+                        ) : data.name === 'rtl' ? (
+                          <span className="type-fields-string">Int</span>
+                        ) : (
+                          <span className="type-fields-string">String</span>
+                        )}
+                      </label>
+                    </div>
+                  )
               )}
             </div>
           </div>
