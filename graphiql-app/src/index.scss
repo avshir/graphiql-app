@@ -32,6 +32,10 @@ body,
   font-family: 'PoiretOne';
 }
 
+main {
+  flex-grow: 1;
+}
+
 a {
   text-decoration: none;
   color: aliceblue;
