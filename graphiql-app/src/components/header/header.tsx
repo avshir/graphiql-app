@@ -19,6 +19,7 @@ interface HeaderProps {
 export default function Header({ scrollY, offsetY }: HeaderProps) {
   const height = useTransform(scrollY, offsetY, HEADER_HIGHT);
 
+  const isAuthLS: string = localStorage.getItem('userIsAuth') || '';
   const { isAuth } = useAuth();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
     navigate('/welcome');
   };
 
-  const sighOutBtn = isAuth ? <Sign handleClick={handlerSignOutBtn} /> : null;
+  const sighOutBtn = isAuth || isAuthLS ? <Sign handleClick={handlerSignOutBtn} /> : null;
 
   return (
     <motion.header className="header navbar-dark bg-primary" style={{ height }}>
