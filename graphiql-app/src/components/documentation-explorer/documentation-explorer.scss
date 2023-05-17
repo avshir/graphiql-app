@@ -3,6 +3,12 @@
   column-gap: 20px;
   margin-bottom: 20px;
 
+  .category-container {
+    .query-arguments {
+      margin-bottom: 10px;
+    }
+  }
+
   .query-item-label {
     cursor: pointer;
 

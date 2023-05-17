@@ -1,7 +1,8 @@
 import './variables-editor.scss';
-import { useAppDispatch } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { setVariables } from '../../features/slices/variablesSlice';
+import { IQueryRequest } from '../documentation-explorer/explorer-types';
 
 interface IVariables {
   [key: string]: string;
@@ -9,8 +10,22 @@ interface IVariables {
 
 export default function VariablesEditor() {
   const dispatch = useAppDispatch();
-
+  const args = useAppSelector((state) => state.arguments.value) as IQueryRequest;
+  const [content, setContent] = useState('');
   const [currentVariables, setCurrentVariables] = useState({} as IVariables);
+
+  useEffect(() => {
+    let queryArgs = '';
+
+    for (const category in args) {
+      queryArgs += `\n      "${args[category].join('\n      ')}": null,`;
+    }
+
+    const resultQueryArgs = `{${queryArgs}
+}`;
+
+    setContent(resultQueryArgs);
+  }, [args]);
 
   useEffect(() => {
     dispatch(setVariables(currentVariables));
@@ -30,6 +45,7 @@ export default function VariablesEditor() {
       });
     }
 
+    //console.log(variablesObj);
     setCurrentVariables(variablesObj);
   };
 
@@ -37,7 +53,7 @@ export default function VariablesEditor() {
     <>
       <h4>Variables</h4>
       <div className="variables-editor-container">
-        <textarea className="variables-editor" onInput={handleChange} />
+        <textarea className="variables-editor" value={content} onInput={handleChange} />
       </div>
     </>
   );
