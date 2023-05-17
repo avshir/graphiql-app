@@ -1,5 +1,5 @@
 import './localization-style.scss';
-import langIcon from '../../../assets/tongue.png';
+import langIcon from '../../../assets/icons/tongue.png';
 
 import { useState, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
