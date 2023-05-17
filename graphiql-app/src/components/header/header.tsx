@@ -9,6 +9,7 @@ import Sign from './sign';
 import Localization from './localization';
 import { useAuth } from '../../hooks/use-auth';
 import { removeUser } from '../../features/slices/userSlice';
+import { HEADER_HIGHT } from '../../utils/animation-data';
 
 interface HeaderProps {
   scrollY: MotionValue<number>;
@@ -16,8 +17,7 @@ interface HeaderProps {
 }
 
 export default function Header({ scrollY, offsetY }: HeaderProps) {
-  const heightSizes = [150, 115];
-  const height = useTransform(scrollY, offsetY, heightSizes);
+  const height = useTransform(scrollY, offsetY, HEADER_HIGHT);
 
   const { isAuth } = useAuth();
   const dispatch = useAppDispatch();
@@ -31,8 +31,8 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
   const sighOutBtn = isAuth ? <Sign handleClick={handlerSignOutBtn} /> : null;
 
   return (
-    <motion.header className={'header navbar-dark bg-primary'} style={{ height }}>
-      <div className={'header-content'}>
+    <motion.header className="header navbar-dark bg-primary" style={{ height }}>
+      <div className="header-content">
         <Logo></Logo>
         {sighOutBtn}
         <Localization></Localization>

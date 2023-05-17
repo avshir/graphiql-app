@@ -1,0 +1,41 @@
+$basic-transition: all 0.3s linear;
+
+.cards-heading {
+  margin: 0;
+  padding: 0 0 20px;
+  font-size: 40px;
+  text-align: center;
+  color: var(--bs-purple);
+  text-shadow: 0 0 1px rgba(111, 66, 193, 0.3), 0 0 2px rgba(111, 66, 193, 0.3),
+    0 0 5px rgba(111, 66, 193, 0.2);
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 0 60px 0;
+  .card {
+    width: 20rem;
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    display: block;
+    width: 25%;
+    filter: invert(78%) sepia(70%) saturate(448%) hue-rotate(109deg) brightness(98%) contrast(101%)
+      drop-shadow(0 0 2px rgba(68, 217, 232, 0.9));
+  }
+}
+
+.card-body {
+  transition: $basic-transition;
+  &:hover {
+    background-color: rgba(111, 66, 193, 0.9);
+  }
+}

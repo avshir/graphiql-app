@@ -2,10 +2,10 @@ $basic-transition: all 0.3s linear;
 $footer-text-color: aliceblue;
 
 .footer {
+  padding: 5px 4%;
   box-shadow: 0 0 2px rgba(23, 2, 41, 0.9), 0 0 4px rgba(23, 2, 41, 0.4),
     0 0 1rem rgba(23, 2, 41, 0.3), 0 0 4rem rgba(23, 2, 41, 0.1);
   color: $footer-text-color;
-  font-family: 'PoiretOne';
 }
 
 .footer-list {
@@ -15,7 +15,8 @@ $footer-text-color: aliceblue;
   justify-content: space-around;
   flex-wrap: wrap;
   column-gap: 20px;
-  width: calc(100vw - 40px);
+  row-gap: 10px;
+  margin: 0;
   padding: 0;
 
   .footer-item {
