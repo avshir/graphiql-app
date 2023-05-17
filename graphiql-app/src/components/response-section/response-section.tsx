@@ -11,8 +11,8 @@ export default function ResponseSection() {
   }, [data]);
 
   return (
-    <>
+    <div className="response-container">
       <pre>{JSON.stringify(currentData, null, ' ')}</pre>
-    </>
+    </div>
   );
 }

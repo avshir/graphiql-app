@@ -160,7 +160,7 @@ export default function DocumentationExplorer() {
             <div className="category-container">
               {queryName === 'continent' || queryName === 'country' || queryName === 'language' ? (
                 <div className="query-arguments">
-                  <span>Arguments:</span>
+                  <span className="param-name">Arguments:</span>
                   <div>
                     <label className="query-item-label">
                       <input
@@ -178,7 +178,7 @@ export default function DocumentationExplorer() {
               )}
 
               <div className="query-list">
-                <span>Fields:</span>
+                <span className="param-name">Fields:</span>
                 {apiDatas[queryName as keyof typeof apiDatas].map(
                   (data: IFieldDatas, index2: number) =>
                     data.name === 'subdivisions' ? (

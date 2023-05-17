@@ -2,12 +2,13 @@
   height: 150px;
   width: 300px;
   border: 1px solid green;
+  padding: 0 10px;
 
   .variables-editor {
     resize: none;
     height: 100%;
     width: 100%;
-    background: none;
+    background: #000000;
     color: var(--bs-body-color);
     border: none;
   }
