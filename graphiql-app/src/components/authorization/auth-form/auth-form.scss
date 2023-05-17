@@ -1,2 +1,9 @@
 .auth-form {
+  max-width: 440px;
+  margin: 0 auto;
+  text-align: center;
+
+  .is-invalid {
+    background-image: none;
+  }
 }
