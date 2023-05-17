@@ -8,13 +8,14 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import LoginPage from '../routes/login-page';
 import RegisterPage from '../routes/register-page';
+import { OFFSET_Y_SCROLL } from '../utils/animation-data';
 
 export default function App() {
   const { scrollY } = useScroll();
-  const offsetY = [0, 500];
+  const offsetY = OFFSET_Y_SCROLL;
 
   return (
-    <div>
+    <div className="wrapper">
       <Header scrollY={scrollY} offsetY={offsetY} />
       <Routes>
         <Route path="/" element={<Navigate to="/welcome" />} />

@@ -25,7 +25,7 @@ export default function Footer() {
             <span>2023</span>
           </li>
           <li className="footer-item">
-            <Link to="https://rs.school/js/" target="_blank" rel="noreferrer">
+            <Link to="https://rs.school/react/" target="_blank" rel="noreferrer">
               <img
                 className="img-active"
                 src={'https://rs.school/images/rs_school_js.svg'}

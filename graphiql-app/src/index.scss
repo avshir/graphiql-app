@@ -19,40 +19,26 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body,
+#root,
+.wrapper {
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'PoiretOne';
+}
+
+main {
+  flex-grow: 1;
+}
+
 a {
   text-decoration: none;
   color: aliceblue;
-}
-
-// TODO => this style is for testing, delete when project is complete
-main {
-  height: 1400px;
-}
-
-.footer-list {
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  column-gap: 20px;
-  width: calc(100vw - 40px);
-  padding: 0;
-
-  .footer-item {
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
-
-    img {
-      filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(3303%) hue-rotate(70deg)
-        brightness(94%) contrast(74%);
-    }
-  }
-
-  a:hover {
-    color: brown;
-  }
 }
 
 .request-editor-container {
