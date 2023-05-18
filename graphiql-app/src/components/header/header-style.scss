@@ -17,6 +17,13 @@
   row-gap: 0;
 }
 
+.header-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .nav-menu {
   display: flex;
   align-items: center;
