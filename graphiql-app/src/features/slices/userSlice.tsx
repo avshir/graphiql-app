@@ -20,11 +20,15 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
+      localStorage.setItem('userIsAuth', 'yes');
+      localStorage.setItem('email', `${action.payload.email}`);
     },
     removeUser: (state) => {
       state.email = null;
       state.token = null;
       state.id = null;
+      localStorage.setItem('userIsAuth', '');
+      localStorage.setItem('email', '');
     },
   },
 });
