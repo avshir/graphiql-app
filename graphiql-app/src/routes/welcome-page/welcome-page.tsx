@@ -15,21 +15,23 @@ const WelcomePage = () => {
   const marginTop = useTransform(scrollY, offsetY, offsetY);
 
   const { isAuth } = useAuth();
+  const isAuthLS: string = localStorage.getItem('userIsAuth') || '';
 
-  const content = isAuth ? (
-    <Link className="btn bg-primary" to="/main">
-      to Main page
-    </Link>
-  ) : (
-    <>
-      <Link className="btn bg-primary" to="/login">
-        Sign In
+  const content =
+    isAuth || isAuthLS ? (
+      <Link className="btn bg-primary" to="/main">
+        to Main page
       </Link>
-      <Link className="btn bg-primary" to="/register">
-        Sign Up
-      </Link>
-    </>
-  );
+    ) : (
+      <>
+        <Link className="btn bg-primary" to="/login">
+          Sign In
+        </Link>
+        <Link className="btn bg-primary" to="/register">
+          Sign Up
+        </Link>
+      </>
+    );
 
   return (
     <motion.main className="welcome-page" style={{ marginTop }}>
