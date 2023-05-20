@@ -4,6 +4,9 @@ import langIcon from '../../../assets/icons/tongue.png';
 import { useState, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { LANGUAGE_DATA } from './data';
+import { getDefaultLanguage } from '../../../utils/default-language';
+
 export default function Localization() {
   const [isLangOpen, setLangOpen] = useState(false);
   const { i18n } = useTranslation();
@@ -18,12 +21,12 @@ export default function Localization() {
 
   const handleLangSwitch = (event: MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLLabelElement;
-    if (target.id === 'en') {
-      i18n.changeLanguage('en');
-      setLangOpen(false);
-    }
-    if (target.id === 'ru') {
-      i18n.changeLanguage('ru');
+
+    if (target.nodeName === 'LABEL') {
+      const language = LANGUAGE_DATA[target.id as keyof typeof LANGUAGE_DATA].id;
+
+      i18n.changeLanguage(language);
+      localStorage.setItem('app-language', language);
       setLangOpen(false);
     }
   };
@@ -40,10 +43,10 @@ export default function Localization() {
           name="btn-dropdown"
           id="btn-dropdown1"
           autoComplete="off"
-          defaultChecked
+          defaultChecked={getDefaultLanguage() === 'en'}
         />
         <label id="en" className="dropdown-item" htmlFor="btn-dropdown1">
-          english
+          {LANGUAGE_DATA.en.name}
         </label>
         <input
           type="radio"
@@ -51,9 +54,10 @@ export default function Localization() {
           name="btn-dropdown"
           id="btn-dropdown2"
           autoComplete="off"
+          defaultChecked={getDefaultLanguage() === 'ru'}
         />
         <label id="ru" className="dropdown-item" htmlFor="btn-dropdown2">
-          русский
+          {LANGUAGE_DATA.ru.name}
         </label>
       </div>
     </div>
