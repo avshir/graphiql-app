@@ -12,7 +12,7 @@ export default function ResponseSection() {
 
   return (
     <div className="response-container">
-      <pre>
+      <pre className="response-container-content">
         {JSON.stringify(currentData, null, ' ') === '""'
           ? ''
           : `${JSON.stringify(currentData, null, ' ')}`}
