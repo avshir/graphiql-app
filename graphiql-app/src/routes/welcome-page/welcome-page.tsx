@@ -13,11 +13,11 @@ const WelcomePage = () => {
   const marginTop = useTransform(scrollY, offsetY, offsetY);
 
   return (
-    <motion.main className="welcome-page" style={{ marginTop }}>
+    <motion.div className="welcome-page" style={{ marginTop }}>
       <Project></Project>
       <Cards></Cards>
       <Course></Course>
-    </motion.main>
+    </motion.div>
   );
 };
 
