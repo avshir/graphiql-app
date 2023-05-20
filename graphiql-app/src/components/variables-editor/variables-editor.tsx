@@ -53,8 +53,8 @@ export default function VariablesEditor() {
 
   return (
     <>
-      <h4>Variables</h4>
-      <div className="variables-editor-container">
+      <div className="variables-editor-container card border-light">
+        <div className="card-header">Variables</div>
         <textarea className="variables-editor" value={content} onInput={handleChange} />
       </div>
     </>

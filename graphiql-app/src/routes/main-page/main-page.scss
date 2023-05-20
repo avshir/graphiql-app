@@ -5,10 +5,6 @@
   width: 100%;
   overflow: hidden;
 
-  .resizable {
-    border: 1px solid green;
-  }
-
   .doc-query {
     display: flex;
     position: relative;
@@ -16,6 +12,25 @@
     .documentation-explorer-container {
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    .documentation-explorer-container::-webkit-scrollbar {
+      border-radius: 10px;
+      background-color: #7a7676;
+      width: 20px;
+    }
+
+    .documentation-explorer-container::-webkit-scrollbar-thumb {
+      background-color: #6e801f;
+      border: 3px solid #7a7676;
+      border-radius: 10px;
+      background-image: URL(././assets/scroll.png);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .documentation-explorer-container::-webkit-scrollbar-thumb:hover {
+      background-color: #c3df4a;
     }
 
     .request-editor-container {
@@ -28,7 +43,7 @@
     flex-shrink: 1 !important;
     overflow-x: hidden;
     overflow-y: auto;
-    background: #000000;
-    padding: 0 10px;
+    // background: #2a0f58;
+    // padding: 0 10px;
   }
 }

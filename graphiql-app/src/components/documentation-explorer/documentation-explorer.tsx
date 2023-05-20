@@ -163,6 +163,7 @@ export default function DocumentationExplorer() {
                   <div>
                     <label className="query-item-label">
                       <input
+                        className="form-check-input query-item-input"
                         type="checkbox"
                         data-queryname={queryName as keyof typeof apiDatas}
                         onChange={handlerInputArguments}
@@ -188,6 +189,7 @@ export default function DocumentationExplorer() {
                       <div className="query-item" key={index2}>
                         <label className="query-item-label">
                           <input
+                            className="form-check-input query-item-input"
                             type="checkbox"
                             data-queryname={queryName as keyof typeof apiDatas}
                             onChange={handlerInput}

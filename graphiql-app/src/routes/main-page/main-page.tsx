@@ -50,7 +50,7 @@ export default function MainPage() {
         <div className="graphql-container">
           <Resizable
             className="doc-query"
-            defaultSize={{ width: '60%', height: 600 }}
+            defaultSize={{ width: '65%', height: 600 }}
             enable={{
               top: false,
               right: true,
@@ -63,8 +63,8 @@ export default function MainPage() {
             }}
           >
             <Resizable
-              className="documentation-explorer-container resizable"
-              defaultSize={{ width: '50%', height: 600 }}
+              className="documentation-explorer-container card border-info mb-3"
+              defaultSize={{ width: '55%', height: 600 }}
               enable={{
                 top: false,
                 right: true,
@@ -76,10 +76,11 @@ export default function MainPage() {
                 topLeft: false,
               }}
             >
+              <div className="card-header">Documentation</div>
               <DocumentationExplorer />
             </Resizable>
             <Resizable
-              className="request-editor-container resizable"
+              className="request-editor-container card border-secondary mb-3"
               defaultSize={{ width: '100%', height: 600 }}
               enable={{
                 top: false,
@@ -92,12 +93,13 @@ export default function MainPage() {
                 topLeft: false,
               }}
             >
+              <div className="card-header">Operation</div>
               <RequestEditor />
               <VariablesEditor />
             </Resizable>
           </Resizable>
           <Resizable
-            className="response-section resizable"
+            className="response-section card border-success mb-3"
             defaultSize={{ width: '100%', height: 600 }}
             enable={{
               top: false,
@@ -110,6 +112,7 @@ export default function MainPage() {
               topLeft: false,
             }}
           >
+            <div className="card-header">Response</div>
             <ResponseSection />
           </Resizable>
         </div>
