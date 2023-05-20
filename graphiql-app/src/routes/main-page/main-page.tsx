@@ -14,22 +14,20 @@ export default function MainPage() {
   };
 
   return (
-    <>
-      <main className="main">
-        <h1>MainPage</h1>
-        <button onClick={handleClick}>Request</button>
-        <div className="graphql-container">
-          <div className="documentation-explorer-container">
-            <DocumentationExplorer />
-          </div>
-          <div className="request-editor-container">
-            <RequestEditor />
-          </div>
-          <div className="response-section">
-            <ResponseSection />
-          </div>
+    <div className="main-page container">
+      <h1>MainPage</h1>
+      <button onClick={handleClick}>Request</button>
+      <div className="graphql-container">
+        <div className="documentation-explorer-container">
+          <DocumentationExplorer />
         </div>
-      </main>
-    </>
+        <div className="request-editor-container">
+          <RequestEditor />
+        </div>
+        <div className="response-section">
+          <ResponseSection />
+        </div>
+      </div>
+    </div>
   );
 }
