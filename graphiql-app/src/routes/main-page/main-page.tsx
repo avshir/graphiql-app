@@ -6,6 +6,7 @@ import DocumentationExplorer from '../../components/documentation-explorer';
 import ResponseSection from '../../components/response-section';
 import VariablesEditor from '../../components/variables-editor/variables-editor';
 import { useEffect, useState } from 'react';
+import { Resizable } from 're-resizable';
 
 interface IVariables {
   [key: string]: string;
@@ -34,7 +35,6 @@ export default function MainPage() {
 
     const resultQuery = cloneSplitQuery.join('\n');
 
-    console.log(resultQuery);
     setRequestQuery(resultQuery);
   }, [query, variables]);
 
@@ -48,16 +48,70 @@ export default function MainPage() {
         <h1>MainPage</h1>
         <button onClick={handleClick}>Request</button>
         <div className="graphql-container">
-          <section className="documentation-explorer-container">
-            <DocumentationExplorer />
-          </section>
-          <section className="request-editor-container">
-            <RequestEditor />
-            <VariablesEditor />
-          </section>
-          <section className="response-section">
+          <Resizable
+            className="doc-query"
+            defaultSize={{ width: '60%', height: 600 }}
+            enable={{
+              top: false,
+              right: true,
+              bottom: false,
+              left: false,
+              topRight: false,
+              bottomRight: false,
+              bottomLeft: false,
+              topLeft: false,
+            }}
+          >
+            <Resizable
+              className="documentation-explorer-container resizable"
+              defaultSize={{ width: '50%', height: 600 }}
+              enable={{
+                top: false,
+                right: true,
+                bottom: false,
+                left: false,
+                topRight: false,
+                bottomRight: false,
+                bottomLeft: false,
+                topLeft: false,
+              }}
+            >
+              <DocumentationExplorer />
+            </Resizable>
+            <Resizable
+              className="request-editor-container resizable"
+              defaultSize={{ width: '100%', height: 600 }}
+              enable={{
+                top: false,
+                right: false,
+                bottom: false,
+                left: false,
+                topRight: false,
+                bottomRight: false,
+                bottomLeft: false,
+                topLeft: false,
+              }}
+            >
+              <RequestEditor />
+              <VariablesEditor />
+            </Resizable>
+          </Resizable>
+          <Resizable
+            className="response-section resizable"
+            defaultSize={{ width: '100%', height: 600 }}
+            enable={{
+              top: false,
+              right: false,
+              bottom: false,
+              left: false,
+              topRight: false,
+              bottomRight: false,
+              bottomLeft: false,
+              topLeft: false,
+            }}
+          >
             <ResponseSection />
-          </section>
+          </Resizable>
         </div>
       </main>
     </>

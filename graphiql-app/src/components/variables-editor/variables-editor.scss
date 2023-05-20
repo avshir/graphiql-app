@@ -1,7 +1,6 @@
 .variables-editor-container {
-  height: 150px;
-  width: 300px;
-  border: 1px solid green;
+  height: 30%;
+  width: 100%;
 
   .variables-editor {
     resize: none;
@@ -10,6 +9,7 @@
     color: var(--bs-body-color);
     border: none;
     padding: 0 10px;
-    background: #000000;
+    background: #2a0f58;
+    outline: none;
   }
 }
