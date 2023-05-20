@@ -8,10 +8,8 @@ interface ISignProps {
 export default function Sign({ handleClick }: ISignProps) {
   const { t } = useTranslation();
   return (
-    <div className="header-sign">
-      <button type="button" className="btn btn-secondary" onClick={handleClick}>
-        {t('header.sign')}
-      </button>
-    </div>
+    <button type="button" className="sign-out btn btn-outline-secondary" onClick={handleClick}>
+      {t('header.sign')}
+    </button>
   );
 }
