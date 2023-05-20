@@ -18,7 +18,7 @@ export default function VariablesEditor() {
     let queryArgs = '';
 
     for (const category in args) {
-      queryArgs += `\n      "${args[category].join('\n      ')}": null,`;
+      queryArgs += `\n   "${args[category].join('\n      ')}": null,`;
     }
 
     const resultQueryArgs = `{${queryArgs}
@@ -33,6 +33,7 @@ export default function VariablesEditor() {
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
+
     const regexp = /(\w+)/gu;
     const variablesArray = value.match(regexp) as RegExpMatchArray;
     const variablesObj: IVariables = {};
@@ -40,12 +41,13 @@ export default function VariablesEditor() {
     if (!!variablesArray) {
       variablesArray.forEach((variable: string, index: number) => {
         if (index % 2 === 0) {
-          variablesObj[variable] = variablesArray[index + 1];
+          const newVariable = variable.replace('Code', '');
+          variablesObj[newVariable] = variablesArray[index + 1];
         }
       });
     }
 
-    //console.log(variablesObj);
+    setContent(value);
     setCurrentVariables(variablesObj);
   };
 

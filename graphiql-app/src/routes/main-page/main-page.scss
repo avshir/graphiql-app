@@ -1,18 +1,19 @@
 .graphql-container {
   display: flex;
   column-gap: 20px;
+  font-family: monospace;
 }
 
 .documentation-explorer-container {
   height: 600px;
-  width: 350px;
+  width: 420px;
   overflow: auto;
   border: 1px solid green;
 }
 
 .request-editor-container {
   height: 500px;
-  width: 300px;
+  width: 350px;
   border: 1px solid green;
 }
 

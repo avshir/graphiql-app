@@ -27,10 +27,7 @@ export default function DocumentationExplorer() {
 
       const result: IField[] = datas.filter(
         (elem: IField) =>
-          elem.name === 'Continent' ||
-          elem.name === 'Country' ||
-          elem.name === 'Language' ||
-          elem.name === 'State'
+          elem.name === 'Continent' || elem.name === 'Country' || elem.name === 'Language'
       );
 
       const mainQuery: MainQuery = {
@@ -120,6 +117,7 @@ export default function DocumentationExplorer() {
     setStateClick(false);
 
     const queries = [];
+    // const queryArgs = [];
 
     for (const category in query) {
       let categoryWithArgument = category;
@@ -129,13 +127,14 @@ export default function DocumentationExplorer() {
 
         if (nameArgument) {
           categoryWithArgument = `${category}(code: $${nameArgument})`;
+          // queryArgs.push(`$${nameArgument}: ID!`);
         }
       }
 
       const oneQuery = `
-    ${categoryWithArgument} {
-        ${query[category].join('\n        ')}
-    }
+  ${categoryWithArgument} {
+    ${query[category].join('\n    ')}
+  }
 `;
 
       queries.push(oneQuery);
@@ -183,6 +182,8 @@ export default function DocumentationExplorer() {
                   (data: IFieldDatas, index2: number) =>
                     data.name === 'subdivisions' ? (
                       ''
+                    ) : data.name === 'states' ? (
+                      ''
                     ) : (
                       <div className="query-item" key={index2}>
                         <label className="query-item-label">
@@ -199,8 +200,6 @@ export default function DocumentationExplorer() {
                             <span className="type-fields-string">{'{ Continent }'}</span>
                           ) : data.name === 'languages' ? (
                             <span className="type-fields-string">{'{ Language }'}</span>
-                          ) : data.name === 'states' ? (
-                            <span className="type-fields-string">{'{ State }'}</span>
                           ) : data.name === 'rtl' ? (
                             <span className="type-fields-string">Int</span>
                           ) : (
