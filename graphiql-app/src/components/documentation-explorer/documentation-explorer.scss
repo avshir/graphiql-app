@@ -1,23 +1,8 @@
 .query-container {
-  background: #1c073f;
-  display: flex;
-  justify-content: space-between;
   padding: 0 10px;
 
-  .query-name {
-    height: fit-content;
-  }
-
-  .query-name:hover {
-    cursor: pointer;
-    color: #c733ae;
-  }
-
   .category-container {
-    padding: 0 10px;
-    margin-bottom: 20px;
-    width: 260px;
-    //display: none;
+    padding: 0 10px 5px 10px;
 
     .query-arguments {
       margin-bottom: 10px;
@@ -29,12 +14,10 @@
   }
 
   .query-item-label {
+    color: var(--bs-highlight-bg);
+
     .query-item-input {
       margin-right: 5px;
-    }
-
-    .type-fields-array {
-      color: yellow;
     }
 
     .type-fields-string {

@@ -44,9 +44,10 @@ export default function MainPage() {
 
   return (
     <>
-      <main className="main">
-        <h1>MainPage</h1>
-        <button onClick={handleClick}>Request</button>
+      <main className="main-graphql-container">
+        <button className="request-btn btn btn-secondary" onClick={handleClick}>
+          Request
+        </button>
         <div className="graphql-container">
           <Resizable
             className="doc-query"

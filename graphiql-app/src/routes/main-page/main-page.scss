@@ -1,3 +1,13 @@
+.main-graphql-container {
+  display: flex;
+  flex-direction: column;
+
+  .request-btn {
+    width: 100px;
+    margin: 20px auto;
+  }
+}
+
 .graphql-container {
   position: relative;
   display: flex;

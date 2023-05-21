@@ -1,10 +1,11 @@
 import './documentation-explorer.scss';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, Suspense, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { fetchSchema } from '../../features/schemaSlice';
 import { IField, IFieldDatas, IQueryRequest, ISchema, MainQuery } from './explorer-types';
 import { saveQuery } from '../../features/querySlice';
 import { saveArguments } from '../../features/slices/argumentsSlice';
+import Tree from '../tree';
 
 export default function DocumentationExplorer() {
   const dispatch = useAppDispatch();
@@ -151,71 +152,74 @@ export default function DocumentationExplorer() {
   }, [dispatch, summaryQuery]);
 
   return (
-    <>
+    <Suspense fallback={<span>Wait...</span>}>
       <form className="query-form">
         {Object.keys(apiDatas).map((queryName: string, index1: number) => (
           <div className="query-container" key={index1}>
-            <div className="query-name">{`{ ${queryName} } `}</div>
-            <div className="category-container">
-              {queryName === 'continent' || queryName === 'country' || queryName === 'language' ? (
-                <div className="query-arguments">
-                  <span className="param-name">Arguments:</span>
-                  <div>
-                    <label className="query-item-label">
-                      <input
-                        className="form-check-input query-item-input"
-                        type="checkbox"
-                        data-queryname={queryName as keyof typeof apiDatas}
-                        onChange={handlerInputArguments}
-                        value="code"
-                      />
-                      code
-                    </label>
+            <Tree name={`{ ${queryName} }`} style={{ color: '#32fbe2' }} className="query-name">
+              <div className="category-container">
+                {queryName === 'continent' ||
+                queryName === 'country' ||
+                queryName === 'language' ? (
+                  <div className="query-arguments">
+                    <span className="param-name">Arguments:</span>
+                    <div>
+                      <label className="query-item-label">
+                        <input
+                          className="form-check-input query-item-input"
+                          type="checkbox"
+                          data-queryname={queryName as keyof typeof apiDatas}
+                          onChange={handlerInputArguments}
+                          value="code"
+                        />
+                        code: <span className="type-fields-string">String</span>
+                      </label>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <div className="query-list">
-                <span className="param-name">Fields:</span>
-                {apiDatas[queryName as keyof typeof apiDatas].map(
-                  (data: IFieldDatas, index2: number) =>
-                    data.name === 'subdivisions' ? (
-                      ''
-                    ) : data.name === 'states' ? (
-                      ''
-                    ) : (
-                      <div className="query-item" key={index2}>
-                        <label className="query-item-label">
-                          <input
-                            className="form-check-input query-item-input"
-                            type="checkbox"
-                            data-queryname={queryName as keyof typeof apiDatas}
-                            onChange={handlerInput}
-                            value={data.name}
-                          />
-                          {data.name}:{' '}
-                          {data.name === 'countries' ? (
-                            <span className="type-fields-string">{'{ Country }'}</span>
-                          ) : data.name === 'continent' ? (
-                            <span className="type-fields-string">{'{ Continent }'}</span>
-                          ) : data.name === 'languages' ? (
-                            <span className="type-fields-string">{'{ Language }'}</span>
-                          ) : data.name === 'rtl' ? (
-                            <span className="type-fields-string">Int</span>
-                          ) : (
-                            <span className="type-fields-string">String</span>
-                          )}
-                        </label>
-                      </div>
-                    )
+                ) : (
+                  ''
                 )}
+
+                <div className="query-list">
+                  <span className="param-name">Fields:</span>
+                  {apiDatas[queryName as keyof typeof apiDatas].map(
+                    (data: IFieldDatas, index2: number) =>
+                      data.name === 'subdivisions' ? (
+                        ''
+                      ) : data.name === 'states' ? (
+                        ''
+                      ) : (
+                        <div className="query-item" key={index2}>
+                          <label className="query-item-label">
+                            <input
+                              className="form-check-input query-item-input"
+                              type="checkbox"
+                              data-queryname={queryName as keyof typeof apiDatas}
+                              onChange={handlerInput}
+                              value={data.name}
+                            />
+                            {data.name}:{' '}
+                            {data.name === 'countries' ? (
+                              <span className="type-fields-string">{'{ Country }'}</span>
+                            ) : data.name === 'continent' ? (
+                              <span className="type-fields-string">{'{ Continent }'}</span>
+                            ) : data.name === 'languages' ? (
+                              <span className="type-fields-string">{'{ Language }'}</span>
+                            ) : data.name === 'rtl' ? (
+                              <span className="type-fields-string">Int</span>
+                            ) : (
+                              <span className="type-fields-string">String</span>
+                            )}
+                          </label>
+                        </div>
+                      )
+                  )}
+                </div>
               </div>
-            </div>
+            </Tree>
           </div>
         ))}
       </form>
-    </>
+    </Suspense>
   );
 }
