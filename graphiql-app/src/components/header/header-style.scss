@@ -10,14 +10,19 @@
 
 .header-content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
   row-gap: 0;
+
+  @media (max-width: 800px) {
+    justify-content: space-around;
+  }
 }
 
-.header-btns {
+.header-btns,
+.nav {
   display: flex;
   gap: 10px;
   justify-content: space-between;
