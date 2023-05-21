@@ -48,16 +48,18 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
 
   return (
     <motion.header className="header navbar-dark bg-primary" style={{ height }}>
-      <div className="header-content">
+      <div className="header-content container">
         <Logo />
-        <nav className="header-btns">
-          {authBtns}
-          {sighOutBtn}
+        <div className="header-btns">
+          <nav className="nav">
+            {authBtns}
+            {sighOutBtn}
+          </nav>
           <Localization />
-        </nav>
+        </div>
       </div>
       {/* TODO => delete when project is complete */}
-      <nav className={'nav-menu'}>
+      <nav className={'nav-menu container'}>
         <NavLink className={'nav-page'} to="/welcome">
           Welcome
         </NavLink>

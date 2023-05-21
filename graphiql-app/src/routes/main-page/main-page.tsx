@@ -44,7 +44,7 @@ export default function MainPage() {
 
   return (
     <>
-      <main className="main-graphql-container">
+      <main className="main-graphql-container main-page container">
         <button className="request-btn btn btn-secondary" onClick={handleClick}>
           Request
         </button>

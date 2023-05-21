@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="register-page">
+    <div className="register-page container">
       <SignUp />
       <div className="text-warning mb-4">
         {t('questionsForNav.haveAccount')}

@@ -4,6 +4,8 @@
   background: url('../../assets/bg/earth.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  max-width: 100vw;
+  height: calc(100vh - 200px);
 
   .request-btn {
     margin: 20px auto;
