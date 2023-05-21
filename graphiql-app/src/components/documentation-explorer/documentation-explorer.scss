@@ -4,6 +4,7 @@
   align-items: center;
   color: #ffffff;
   margin-top: 5px;
+  text-shadow: 2px 2px 3px #000000;
 }
 
 .query-form {
@@ -13,7 +14,7 @@
 
 .query-form::-webkit-scrollbar {
   border-radius: 10px;
-  background-color: #000000;
+  background-color: transparent;
   width: 13px;
   height: 13px;
 }
@@ -43,13 +44,14 @@
     }
 
     .param-name {
-      color: #e6a4ae;
-      text-shadow: 0 0px 0px #ffebee;
+      color: #ffab91;
+      text-shadow: 2px 2px 3px #000000;
     }
   }
 
   .query-item-label {
     color: #ffeb3b;
+    text-shadow: 2px 2px 3px #000000;
 
     .query-item-input {
       margin-right: 5px;

@@ -157,7 +157,11 @@ export default function DocumentationExplorer() {
       <div className="query-form">
         {Object.keys(apiDatas).map((queryName: string, index1: number) => (
           <div className="query-container" key={index1}>
-            <Tree name={`{ ${queryName} }`} style={{ color: '#32fbe2' }} className="query-name">
+            <Tree
+              name={`{ ${queryName} }`}
+              style={{ color: '#ffffff', fontWeight: 'bold', textShadow: '2px 2px 3px #000000' }}
+              className="query-name"
+            >
               <div className="category-container">
                 {queryName === 'continent' ||
                 queryName === 'country' ||
