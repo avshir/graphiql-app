@@ -12,6 +12,7 @@ export default function ResponseSection() {
 
   return (
     <div className="response-container">
+      <h5 className="header-section">Response</h5>
       <pre className="response-container-content">
         {JSON.stringify(currentData, null, ' ') === '""'
           ? ''

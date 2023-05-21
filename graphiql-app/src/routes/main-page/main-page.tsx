@@ -64,7 +64,7 @@ export default function MainPage() {
             }}
           >
             <Resizable
-              className="documentation-explorer-container card border-info mb-3"
+              className="documentation-explorer-container glass-effect"
               defaultSize={{ width: '55%', height: 600 }}
               enable={{
                 top: false,
@@ -77,11 +77,10 @@ export default function MainPage() {
                 topLeft: false,
               }}
             >
-              <div className="card-header">Documentation</div>
               <DocumentationExplorer />
             </Resizable>
             <Resizable
-              className="request-editor-container card border-secondary mb-3"
+              className="request-editor-container"
               defaultSize={{ width: '100%', height: 600 }}
               enable={{
                 top: false,
@@ -94,13 +93,12 @@ export default function MainPage() {
                 topLeft: false,
               }}
             >
-              <div className="card-header">Operation</div>
               <RequestEditor />
               <VariablesEditor />
             </Resizable>
           </Resizable>
           <Resizable
-            className="response-section card border-success mb-3"
+            className="response-section glass-effect"
             defaultSize={{ width: '100%', height: 600 }}
             enable={{
               top: false,
@@ -113,7 +111,6 @@ export default function MainPage() {
               topLeft: false,
             }}
           >
-            <div className="card-header">Response</div>
             <ResponseSection />
           </Resizable>
         </div>

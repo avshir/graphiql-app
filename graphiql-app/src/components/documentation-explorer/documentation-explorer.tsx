@@ -153,7 +153,8 @@ export default function DocumentationExplorer() {
 
   return (
     <Suspense fallback={<span>Wait...</span>}>
-      <form className="query-form">
+      <h5 className="header-section">Documentation</h5>
+      <div className="query-form">
         {Object.keys(apiDatas).map((queryName: string, index1: number) => (
           <div className="query-container" key={index1}>
             <Tree name={`{ ${queryName} }`} style={{ color: '#32fbe2' }} className="query-name">
@@ -219,7 +220,7 @@ export default function DocumentationExplorer() {
             </Tree>
           </div>
         ))}
-      </form>
+      </div>
     </Suspense>
   );
 }

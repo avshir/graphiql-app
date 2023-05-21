@@ -22,8 +22,9 @@ export default function RequestEditor() {
   }, [dispatch, content]);
 
   return (
-    <>
-      <textarea className="request-editor" value={content} onInput={handleChange} />
-    </>
+    <div className="request-editor glass-effect">
+      <h5 className="header-section">Operation</h5>
+      <textarea className="request-editor-textarea" value={content} onInput={handleChange} />
+    </div>
   );
 }
