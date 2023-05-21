@@ -1,6 +1,6 @@
 import './header-style.scss';
 
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { useTransform, motion, MotionValue } from 'framer-motion';
 import { useAppDispatch } from './../../utils/hooks';
 
@@ -19,6 +19,7 @@ interface HeaderProps {
 export default function Header({ scrollY, offsetY }: HeaderProps) {
   const height = useTransform(scrollY, offsetY, HEADER_HIGHT);
 
+  const isAuthLS: string = localStorage.getItem('userIsAuth') || '';
   const { isAuth } = useAuth();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -28,14 +29,32 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
     navigate('/welcome');
   };
 
-  const sighOutBtn = isAuth ? <Sign handleClick={handlerSignOutBtn} /> : null;
+  const sighOutBtn = isAuth || isAuthLS ? <Sign handleClick={handlerSignOutBtn} /> : null;
+  const authBtns =
+    isAuth || isAuthLS ? (
+      <Link className="btn btn-secondary" to="/main">
+        Main page
+      </Link>
+    ) : (
+      <>
+        <Link className="btn btn-outline-secondary" to="/login">
+          Sign In
+        </Link>
+        <Link className="btn btn-outline-secondary" to="/register">
+          Sign Up
+        </Link>
+      </>
+    );
 
   return (
     <motion.header className="header navbar-dark bg-primary" style={{ height }}>
       <div className="header-content">
-        <Logo></Logo>
-        {sighOutBtn}
-        <Localization></Localization>
+        <Logo />
+        <nav className="header-btns">
+          {authBtns}
+          {sighOutBtn}
+          <Localization />
+        </nav>
       </div>
       {/* TODO => delete when project is complete */}
       <nav className={'nav-menu'}>

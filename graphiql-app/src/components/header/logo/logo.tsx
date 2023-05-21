@@ -1,5 +1,10 @@
+import { Link } from 'react-router-dom';
 import './logo-style.scss';
 
 export default function Logo() {
-  return <div className="header-logo">countries API</div>;
+  return (
+    <Link className="header-logo" to="/welcome">
+      countries API
+    </Link>
+  );
 }

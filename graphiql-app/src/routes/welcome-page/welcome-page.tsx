@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-import { useAuth } from '../../hooks/use-auth';
 import Project from '../../components/content/welcome-page/project';
 import Course from '../../components/content/welcome-page/course';
 import Cards from '../../components/cards/welcome-page';
@@ -14,26 +12,8 @@ const WelcomePage = () => {
   const offsetY = OFFSET_Y_SCROLL;
   const marginTop = useTransform(scrollY, offsetY, offsetY);
 
-  const { isAuth } = useAuth();
-
-  const content = isAuth ? (
-    <Link className="btn bg-primary" to="/main">
-      to Main page
-    </Link>
-  ) : (
-    <>
-      <Link className="btn bg-primary" to="/login">
-        Sign In
-      </Link>
-      <Link className="btn bg-primary" to="/register">
-        Sign Up
-      </Link>
-    </>
-  );
-
   return (
     <motion.main className="welcome-page" style={{ marginTop }}>
-      <div className="btn__container">{content}</div>
       <Project></Project>
       <Cards></Cards>
       <Course></Course>

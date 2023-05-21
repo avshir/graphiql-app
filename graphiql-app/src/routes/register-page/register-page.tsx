@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import SignUp from './../../components/authorization/sign-up';
 
 import './register-page.scss';
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="register-page">
-      <h1 className="text-center mb-4">Register</h1>
       <SignUp />
-      <p>
-        Already have an account? <Link to="/login">Sign in</Link>
-      </p>
+      <div className="text-warning mb-4">
+        {t('questionsForNav.haveAccount')}
+        <Link to="/login" className="btn btn-link">
+          {t('buttons.signIn')}
+        </Link>
+      </div>
     </div>
   );
 };

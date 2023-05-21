@@ -14,11 +14,17 @@ export default function App() {
   const { scrollY } = useScroll();
   const offsetY = OFFSET_Y_SCROLL;
 
+  const isAuthLS: string = localStorage.getItem('userIsAuth') || '';
+
   return (
     <div className="wrapper">
       <Header scrollY={scrollY} offsetY={offsetY} />
       <Routes>
-        <Route path="/" element={<Navigate to="/welcome" />} />
+        {isAuthLS ? (
+          <Route path="/" element={<Navigate to="/main" />} />
+        ) : (
+          <Route path="/" element={<Navigate to="/welcome" />} />
+        )}
         <Route path="welcome" element={<WelcomePage />} />
         <Route path="main" element={<MainPage />} />
         <Route path="login" element={<LoginPage />} />
