@@ -1,13 +1,21 @@
 .main-graphql-container {
   display: flex;
   flex-direction: column;
-  background: url('../../assets/bg/earth-2.jpg');
+  background: url('../../assets/bg/earth.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 
   .request-btn {
-    width: 100px;
     margin: 20px auto;
+    width: 120px;
+    height: 40px;
+    transition: 0.4s;
+    box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .request-btn:hover {
+    transform: translate(0px, -5px);
+    box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
   }
 }
 
