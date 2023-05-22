@@ -71,7 +71,7 @@ const resources = {
         required: 'Required field',
         emailPattern: 'Email must contain @ and .',
         passwordPattern:
-          'Enter at least one uppercase and one lowercase letter, one digit and one special character',
+          'Enter at least one uppercase and one lowercase letter, one digit and one special character like !@#$%^&*',
         minLength8: 'Enter at least 8 characters',
         maxLength16: 'Enter max 16 characters',
         maxLength30: 'Enter max 30 characters',
@@ -150,7 +150,7 @@ const resources = {
         required: 'Поле обязательно к заполнению',
         emailPattern: 'Эл.почта должна содержать знаки @ and .',
         passwordPattern:
-          'Введите как минимум одну прописную и одну строчную букву, одну цифру и один спец.символ',
+          'Введите как минимум одну прописную и одну строчную букву, одну цифру и один спец.символ из !@#$%^&*',
         minLength8: 'Введите минимум 8 символов',
         maxLength16: 'Введите максимум 16 символов',
         maxLength30: 'Введите максимум 30 символов',
