@@ -1,21 +1,29 @@
-.response-container {
+.variables-editor-container {
+  height: 30%;
+  width: 100%;
   padding: 0 10px;
-  height: 100%;
-  overflow: hidden;
 
-  .response-container-content {
-    height: 85%;
-    overflow: auto;
+  .variables-editor {
+    resize: none;
+    height: 70%;
+    width: 100%;
+    color: var(--bs-body-color);
+    border: none;
+    padding: 0 10px;
+    background: none;
+    outline: none;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
-  .response-container-content::-webkit-scrollbar {
+  .variables-editor::-webkit-scrollbar {
     border-radius: 10px;
     background-color: transparent;
     width: 13px;
     height: 13px;
   }
 
-  .response-container-content::-webkit-scrollbar-thumb {
+  .variables-editor::-webkit-scrollbar-thumb {
     background-color: #e6e8ec;
     border-radius: 10px;
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
@@ -24,7 +32,7 @@
     background-repeat: no-repeat;
   }
 
-  .response-container-content::-webkit-scrollbar-track {
+  .variables-editor::-webkit-scrollbar-track {
     box-shadow: inset 0 0 3px #ffffff;
     border-radius: 10px;
   }

@@ -1,9 +1,70 @@
-.query-container {
+.header-section {
   display: flex;
-  column-gap: 20px;
-  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin-top: 5px;
+  text-shadow: 2px 2px 3px #000000;
+}
+
+.query-form {
+  overflow: auto;
+  height: 90%;
+}
+
+.query-form::-webkit-scrollbar {
+  border-radius: 10px;
+  background-color: transparent;
+  width: 13px;
+  height: 13px;
+}
+
+.query-form::-webkit-scrollbar-thumb {
+  background-color: #e6e8ec;
+  border-radius: 10px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+  background-image: URL(../../assets/icons/scroll.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.query-form::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px #ffffff;
+  border-radius: 10px;
+}
+
+.query-container {
+  padding: 0 10px;
+
+  .category-container {
+    padding: 0 10px 5px 10px;
+
+    .query-arguments {
+      margin-bottom: 10px;
+    }
+
+    .param-name {
+      color: #ffab91;
+      text-shadow: 2px 2px 3px #000000;
+    }
+  }
 
   .query-item-label {
+    color: #ffeb3b;
+    text-shadow: 2px 2px 3px #000000;
+
+    .query-item-input {
+      margin-right: 5px;
+    }
+
+    .type-fields-string {
+      color: #8bc34a;
+    }
+  }
+
+  .query-item-label:hover {
     cursor: pointer;
+    color: #ffffff;
+    text-shadow: 0 0px 0px #ffffff;
   }
 }

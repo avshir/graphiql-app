@@ -4,6 +4,8 @@ import requestReducer from '../features/requestSlice';
 import schemaReducer from '../features/schemaSlice';
 import queryReducer from '../features/querySlice';
 import userReducer from '../features/slices/userSlice';
+import variablesReducer from '../features/slices/variablesSlice';
+import argumentsReducer from '../features/slices/argumentsSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ const store = configureStore({
     request: requestReducer,
     query: queryReducer,
     user: userReducer,
+    variables: variablesReducer,
+    arguments: argumentsReducer,
   },
 });
 
