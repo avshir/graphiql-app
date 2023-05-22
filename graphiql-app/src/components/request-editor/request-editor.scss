@@ -1,9 +1,53 @@
-.ace-editor {
-  display: none;
+.request-editor {
+  height: 70%;
+  width: 100%;
+  padding: 0 10px;
+
+  .header-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  .request-editor-textarea {
+    resize: none;
+    height: 90%;
+    width: 100%;
+    background: none;
+    color: var(--bs-body-color);
+    border: none;
+    padding: 0 10px;
+    outline: none;
+    overflow: auto;
+  }
+
+  .request-editor-textarea::-webkit-scrollbar {
+    border-radius: 10px;
+    background-color: transparent;
+    width: 13px;
+    height: 13px;
+  }
+
+  .request-editor-textarea::-webkit-scrollbar-thumb {
+    background-color: #e6e8ec;
+    border-radius: 10px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+    background-image: URL(../../assets/icons/scroll.png);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .request-editor-textarea::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px #ffffff;
+    border-radius: 10px;
+  }
 }
 
-.request-editor {
-  resize: none;
-  height: 100%;
-  width: 100%;
+.glass-effect {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

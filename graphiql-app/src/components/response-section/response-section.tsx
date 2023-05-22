@@ -1,6 +1,10 @@
 import './response-section.scss';
 import { useAppSelector } from '../../utils/hooks';
 import { useEffect, useState } from 'react';
+import Spinner from '../spinner';
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { aura } from '@uiw/codemirror-theme-aura';
 
 export default function ResponseSection() {
   const data = useAppSelector((state) => state.data.list);
@@ -11,8 +15,19 @@ export default function ResponseSection() {
   }, [data]);
 
   return (
-    <>
-      <pre>{JSON.stringify(currentData, null, ' ')}</pre>
-    </>
+    <div className="response-container">
+      <h5 className="header-section">Response</h5>
+      <Spinner />
+      <CodeMirror
+        className="response-container-content"
+        value={
+          JSON.stringify(currentData, null, ' ') === '""'
+            ? ''
+            : `${JSON.stringify(currentData, null, ' ')}`
+        }
+        theme={aura}
+        extensions={[json()]}
+      />
+    </div>
   );
 }
