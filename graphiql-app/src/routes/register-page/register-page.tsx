@@ -11,12 +11,14 @@ const RegisterPage = () => {
 
   return (
     <div className="register-page container">
-      <SignUp />
-      <div className="text-warning mb-4">
-        {t('questionsForNav.haveAccount')}
-        <Link to="/login" className="btn btn-link">
-          {t('buttons.signIn')}
-        </Link>
+      <div className="register-page__block auth-form__block">
+        <SignUp />
+        <div className="text-warning mb-4">
+          {t('questionsForNav.haveAccount')}
+          <Link to="/login" className="btn btn-link">
+            {t('buttons.signIn')}
+          </Link>
+        </div>
       </div>
     </div>
   );
