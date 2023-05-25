@@ -7,17 +7,17 @@ import { json } from '@codemirror/lang-json';
 import { aura } from '@uiw/codemirror-theme-aura';
 
 export default function ResponseSection() {
-  const data = useAppSelector((state) => state.data.list);
+  const { list, loading } = useAppSelector((state) => state.data);
   const [currentData, setCurrentData] = useState('');
 
   useEffect(() => {
-    setCurrentData(data);
-  }, [data]);
+    setCurrentData(list);
+  }, [list]);
 
   return (
     <div className="response-container">
       <h5 className="header-section">Response</h5>
-      <Spinner />
+      {loading ? <Spinner /> : <></>}
       <CodeMirror
         className="response-container-content"
         value={
