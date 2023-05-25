@@ -7,6 +7,7 @@
 .graphql-container {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-self: center;
   justify-content: center;
   font-family: monospace;
@@ -15,20 +16,21 @@
 
   .documentation-explorer-container {
     padding: 0 10px;
-    min-width: 250px;
+    min-width: 300px;
   }
 
   .request-editor-container {
     position: relative;
     flex-shrink: 1 !important;
     min-width: 300px;
+    margin-bottom: 1rem;
   }
 
   .response-section {
     flex-shrink: 1 !important;
     overflow-x: hidden;
     overflow-y: auto;
-    min-width: 150px;
+    min-width: 300px;
   }
 
   .response-section::-webkit-scrollbar {
