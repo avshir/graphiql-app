@@ -8,28 +8,27 @@
   position: relative;
   display: flex;
   align-self: center;
+  justify-content: center;
   font-family: monospace;
-  width: 90%;
+  width: 100%;
   margin-top: 20px;
 
-  .doc-query {
-    display: flex;
+  .documentation-explorer-container {
+    padding: 0 10px;
+    min-width: 250px;
+  }
+
+  .request-editor-container {
     position: relative;
-
-    .documentation-explorer-container {
-      padding: 0 10px;
-    }
-
-    .request-editor-container {
-      position: relative;
-      flex-shrink: 1 !important;
-    }
+    flex-shrink: 1 !important;
+    min-width: 300px;
   }
 
   .response-section {
     flex-shrink: 1 !important;
     overflow-x: hidden;
     overflow-y: auto;
+    min-width: 150px;
   }
 
   .response-section::-webkit-scrollbar {

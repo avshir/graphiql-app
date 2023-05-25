@@ -11,8 +11,25 @@ export default function MainPage() {
       <div className="main-graphql-container container">
         <div className="graphql-container">
           <Resizable
-            className="doc-query"
-            defaultSize={{ width: '65%', height: 600 }}
+            className="documentation-explorer-container card border-dark mb-3"
+            defaultSize={{ width: '30%', height: 600 }}
+            enable={{
+              top: false,
+              right: true,
+              bottom: false,
+              left: true,
+              topRight: false,
+              bottomRight: false,
+              bottomLeft: false,
+              topLeft: false,
+            }}
+          >
+            <DocumentationExplorer />
+          </Resizable>
+
+          <Resizable
+            className="request-editor-container"
+            defaultSize={{ width: '30%', height: 600 }}
             enable={{
               top: false,
               right: true,
@@ -24,46 +41,16 @@ export default function MainPage() {
               topLeft: false,
             }}
           >
-            <Resizable
-              className="documentation-explorer-container card border-dark mb-3"
-              defaultSize={{ width: '55%', height: 600 }}
-              enable={{
-                top: false,
-                right: true,
-                bottom: false,
-                left: false,
-                topRight: false,
-                bottomRight: false,
-                bottomLeft: false,
-                topLeft: false,
-              }}
-            >
-              <DocumentationExplorer />
-            </Resizable>
-            <Resizable
-              className="request-editor-container"
-              defaultSize={{ width: '100%', height: 600 }}
-              enable={{
-                top: false,
-                right: false,
-                bottom: false,
-                left: false,
-                topRight: false,
-                bottomRight: false,
-                bottomLeft: false,
-                topLeft: false,
-              }}
-            >
-              <RequestEditor />
-              <VariablesEditor />
-            </Resizable>
+            <RequestEditor />
+            <VariablesEditor />
           </Resizable>
+
           <Resizable
             className="response-section card border-dark mb-3"
-            defaultSize={{ width: '100%', height: 600 }}
+            defaultSize={{ width: '30%', height: 600 }}
             enable={{
               top: false,
-              right: false,
+              right: true,
               bottom: false,
               left: false,
               topRight: false,
