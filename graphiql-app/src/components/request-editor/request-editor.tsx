@@ -57,9 +57,12 @@ export default function RequestEditor() {
   };
 
   return (
-    <div className="request-editor glass-effect">
-      <h5 className="header-section">Operation</h5>
-      <button className="request-btn" onClick={handleClick}></button>
+    <div className="request-editor card border-dark mb-3">
+      <h5 className="header-section card-title">Operation</h5>
+      <button className="request-btn" onClick={handleClick}>
+        <span className="request-btn-icon"></span>
+        <span className="request-btn-name">Run</span>
+      </button>
       <CodeMirror
         className="request-editor-textarea"
         value={content}

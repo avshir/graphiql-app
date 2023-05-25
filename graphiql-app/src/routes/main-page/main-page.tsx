@@ -25,7 +25,7 @@ export default function MainPage() {
             }}
           >
             <Resizable
-              className="documentation-explorer-container glass-effect"
+              className="documentation-explorer-container card border-dark mb-3"
               defaultSize={{ width: '55%', height: 600 }}
               enable={{
                 top: false,
@@ -59,7 +59,7 @@ export default function MainPage() {
             </Resizable>
           </Resizable>
           <Resizable
-            className="response-section glass-effect"
+            className="response-section card border-dark mb-3"
             defaultSize={{ width: '100%', height: 600 }}
             enable={{
               top: false,

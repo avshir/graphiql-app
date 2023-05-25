@@ -16,7 +16,7 @@ export default function ResponseSection() {
 
   return (
     <div className="response-container">
-      <h5 className="header-section">Response</h5>
+      <h5 className="header-section card-title">Response</h5>
       {loading ? <Spinner /> : <></>}
       <CodeMirror
         className="response-container-content"
