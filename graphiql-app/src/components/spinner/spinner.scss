@@ -16,6 +16,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes spinner-inner-s {
   0%,
   100% {
@@ -25,55 +26,66 @@
     animation-timing-function: cubic-bezier(0.2 0.2 0.8 1);
   }
   0% {
-    transform: translate(-30px, -30px) scale(0);
+    transform: translate(-15px, -15px) scale(0);
   }
   50% {
-    transform: translate(-30px, -30px) scale(1);
+    transform: translate(-15px, -15px) scale(1);
   }
   100% {
-    transform: translate(-30px, -30px) scale(0);
+    transform: translate(-15px, -15px) scale(0);
   }
 }
+
 .spinner-inner > div {
-  transform: translate(0px, -15px);
+  transform: translate(0px, -7.5px);
 }
+
 .spinner-inner > div > div {
   animation: spinner-inner-r 1s linear infinite;
-  transform-origin: 100px 100px;
+  transform-origin: 50px 50px;
 }
+
 .spinner-inner > div > div > div {
   position: absolute;
-  transform: translate(100px, 82px);
+  transform: translate(50px, 41px);
 }
+
 .spinner-inner > div > div > div > div {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #ea39b8;
   animation: spinner-inner-s 1s linear infinite;
 }
+
 .spinner-inner > div > div:last-child {
   animation-delay: -0.5s;
 }
+
 .spinner-inner > div > div:last-child > div > div {
   animation-delay: -0.5s;
   background: #6f42c1;
 }
+
 .spinner {
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   display: inline-block;
   overflow: hidden;
   background: none;
+  position: absolute;
+  top: 0px;
 }
+
 .spinner-inner {
   width: 100%;
   height: 100%;
   position: relative;
-  transform: translateZ(0) scale(1);
+  transform: translateZ(0) scale(0.5);
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */
 }
+
 .spinner-inner div {
   box-sizing: content-box;
 }
