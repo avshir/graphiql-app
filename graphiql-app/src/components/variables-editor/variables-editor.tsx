@@ -86,8 +86,8 @@ export default function VariablesEditor() {
 
   return (
     <>
-      <div className="variables-editor-container glass-effect">
-        <h5 className="header-section">Variables</h5>
+      <div className="variables-editor-container card border-dark mb-3">
+        <h5 className="header-section card-title">Variables</h5>
         <CodeMirror
           className="variables-editor"
           value={content}
