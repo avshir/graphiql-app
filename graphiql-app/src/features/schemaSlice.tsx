@@ -7,21 +7,30 @@ export const fetchSchema = createAsyncThunk<ISchema, string, { rejectValue: stri
   async function (_, { rejectWithValue }) {
     const query = '{__schema{types{name,fields{name}}}}';
 
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ query }),
+      });
 
-    if (!response.ok) {
-      return rejectWithValue('Connect to API Failed!');
+      if (!response.ok) {
+        if (response.status === 404) {
+          return rejectWithValue(`${response.statusText}`);
+        }
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      let message = 'Unknown error';
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      return rejectWithValue(`${message}`);
     }
-
-    const data = await response.json();
-
-    return data;
   }
 );
 
