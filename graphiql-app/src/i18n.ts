@@ -81,6 +81,17 @@ const resources = {
         userNotFound: 'User with this email is not found!',
         tooManyRequests: 'Too many requests!',
       },
+      errorBoundaries: {
+        alert: {
+          message: 'Something went wrong!',
+          instructions: 'Try to close this message or reload the page.',
+        },
+      },
+      errorApi: {
+        message: 'Something went wrong!',
+        instructions: 'Try to close this message or reload the page.',
+        button: 'close',
+      },
     },
   },
   ru: {
@@ -159,6 +170,17 @@ const resources = {
         wrongPassword: 'Неверный пароль. Попробуйте снова!',
         userNotFound: 'Пользователь с такой эл. почтой не найден!',
         tooManyRequests: 'Слишком много запросов!',
+      },
+      errorBoundaries: {
+        alert: {
+          message: 'Что-то пошло не так!',
+          instructions: 'Попробуйте закрыть это сообщение или перезагрузить страницу.',
+        },
+      },
+      errorApi: {
+        message: 'Что-то пошло не так!',
+        instructions: 'Попробуйте закрыть это сообщение или перезагрузить страницу.',
+        button: 'закрыть',
       },
     },
   },
