@@ -1,16 +1,18 @@
 import './documentation-explorer.scss';
-import { ChangeEvent, Suspense, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { fetchSchema } from '../../features/schemaSlice';
 import { IField, IFieldDatas, IQueryRequest, ISchema, MainQuery } from './explorer-types';
 import { saveQuery } from '../../features/querySlice';
 import { saveArguments } from '../../features/slices/argumentsSlice';
 import Tree from '../tree';
+import Spinner from '../spinner';
 
 export default function DocumentationExplorer() {
   const dispatch = useAppDispatch();
   const dataSchema = useAppSelector((state) => state.schema.list) as ISchema;
   const variables = useAppSelector((state) => state.variables.value) as IQueryRequest;
+  const { loading } = useAppSelector((state) => state.schema);
 
   const [apiDatas, setApiDatas] = useState({} as MainQuery);
   const [summaryQuery, setSummaryQuery] = useState('');
@@ -152,8 +154,9 @@ export default function DocumentationExplorer() {
   }, [dispatch, summaryQuery]);
 
   return (
-    <Suspense fallback={<span>Wait...</span>}>
+    <>
       <h5 className="header-section card-title">Documentation</h5>
+      {loading ? <Spinner /> : <></>}
       <div className="query-form">
         {Object.keys(apiDatas).map((queryName: string, index1: number) => (
           <div className="query-container" key={index1}>
@@ -221,6 +224,6 @@ export default function DocumentationExplorer() {
           </div>
         ))}
       </div>
-    </Suspense>
+    </>
   );
 }
