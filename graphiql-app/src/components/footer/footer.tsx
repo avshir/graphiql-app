@@ -2,12 +2,16 @@ import './footer-style.scss';
 
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ErrorBoundary } from 'react-error-boundary';
+
+import AlertMessage from '../error';
 
 export default function Footer() {
   const { t } = useTranslation();
+
   return (
-    <>
-      <footer className="footer bg-dark">
+    <footer className="footer bg-dark">
+      <ErrorBoundary FallbackComponent={AlertMessage}>
         <ul className="footer-list">
           <li className="footer-item">
             <img src={'https://svgshare.com/i/og2.svg'} width="40" alt="icon" />
@@ -35,7 +39,7 @@ export default function Footer() {
             </Link>
           </li>
         </ul>
-      </footer>
-    </>
+      </ErrorBoundary>
+    </footer>
   );
 }

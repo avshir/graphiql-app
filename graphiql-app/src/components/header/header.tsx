@@ -3,6 +3,7 @@ import './header-style.scss';
 import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { useTransform, motion, MotionValue } from 'framer-motion';
 import { useAppDispatch } from './../../utils/hooks';
+import { ErrorBoundary } from 'react-error-boundary';
 
 import Logo from './logo';
 import Sign from './sign';
@@ -10,6 +11,8 @@ import Localization from './localization';
 import { useAuth } from '../../hooks/use-auth';
 import { removeUser } from '../../features/slices/userSlice';
 import { HEADER_HIGHT } from '../../utils/animation-data';
+
+import AlertMessage from '../error';
 
 interface HeaderProps {
   scrollY: MotionValue<number>;
@@ -48,16 +51,18 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
 
   return (
     <motion.header className="header navbar-dark bg-primary" style={{ height }}>
-      <div className="header-content container">
-        <Logo />
-        <div className="header-btns">
-          <nav className="nav">
-            {authBtns}
-            {sighOutBtn}
-          </nav>
-          <Localization />
+      <ErrorBoundary FallbackComponent={AlertMessage}>
+        <div className="header-content container">
+          <Logo />
+          <div className="header-btns">
+            <nav className="nav">
+              {authBtns}
+              {sighOutBtn}
+            </nav>
+            <Localization />
+          </div>
         </div>
-      </div>
+      </ErrorBoundary>
       {/* TODO => delete when project is complete */}
       <nav className={'nav-menu container'}>
         <NavLink className={'nav-page'} to="/welcome">
