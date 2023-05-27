@@ -4,6 +4,7 @@ import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { useTransform, motion, MotionValue } from 'framer-motion';
 import { useAppDispatch } from './../../utils/hooks';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useTranslation } from 'react-i18next';
 
 import Logo from './logo';
 import Sign from './sign';
@@ -21,6 +22,7 @@ interface HeaderProps {
 
 export default function Header({ scrollY, offsetY }: HeaderProps) {
   const height = useTransform(scrollY, offsetY, HEADER_HIGHT);
+  const { t } = useTranslation();
 
   const isAuthLS: string = localStorage.getItem('userIsAuth') || '';
   const { isAuth } = useAuth();
@@ -36,15 +38,15 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
   const authBtns =
     isAuth || isAuthLS ? (
       <Link className="btn btn-secondary" to="/main">
-        Main page
+        {t('header.main')}
       </Link>
     ) : (
       <>
         <Link className="btn btn-outline-secondary" to="/login">
-          Sign In
+          {t('header.signIn')}
         </Link>
         <Link className="btn btn-outline-secondary" to="/register">
-          Sign Up
+          {t('header.signUp')}
         </Link>
       </>
     );
