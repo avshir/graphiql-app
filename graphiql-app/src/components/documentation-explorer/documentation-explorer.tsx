@@ -7,7 +7,7 @@ import { saveQuery } from '../../features/querySlice';
 import { saveArguments } from '../../features/slices/argumentsSlice';
 import Tree from '../tree';
 import Spinner from '../spinner';
-import { setOpenState } from '../../features/slices/stateVariablesSectionSlice';
+import { setOpenStateVariables } from '../../features/slices/stateVariablesSectionSlice';
 
 export default function DocumentationExplorer() {
   const dispatch = useAppDispatch();
@@ -79,7 +79,7 @@ export default function DocumentationExplorer() {
   };
 
   const handlerInputArguments = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setOpenState(true));
+    dispatch(setOpenStateVariables(true));
     setStateClick(true);
 
     const nameArguments: string = event.target.value;

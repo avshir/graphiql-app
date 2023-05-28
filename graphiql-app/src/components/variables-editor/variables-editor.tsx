@@ -6,7 +6,7 @@ import { IQueryRequest } from '../documentation-explorer/explorer-types';
 import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
 import { aura } from '@uiw/codemirror-theme-aura';
-import { setOpenState } from '../../features/slices/stateVariablesSectionSlice';
+import { setOpenStateVariables } from '../../features/slices/stateVariablesSectionSlice';
 
 interface IVariables {
   [key: string]: string;
@@ -63,7 +63,7 @@ export default function VariablesEditor() {
   };
 
   useEffect(() => {
-    dispatch(setOpenState(isOpen));
+    dispatch(setOpenStateVariables(isOpen));
   }, [dispatch, isOpen]);
 
   useEffect(() => {

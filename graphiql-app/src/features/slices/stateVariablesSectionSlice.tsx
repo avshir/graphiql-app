@@ -6,12 +6,12 @@ export const stateVariablesSectionSlice = createSlice({
     value: false,
   },
   reducers: {
-    setOpenState: (state, action: PayloadAction<boolean>) => {
+    setOpenStateVariables: (state, action: PayloadAction<boolean>) => {
       state.value = action.payload;
     },
   },
 });
 
-export const { setOpenState } = stateVariablesSectionSlice.actions;
+export const { setOpenStateVariables } = stateVariablesSectionSlice.actions;
 
 export default stateVariablesSectionSlice.reducer;
