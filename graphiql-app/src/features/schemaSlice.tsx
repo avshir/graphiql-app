@@ -37,7 +37,8 @@ export const fetchSchema = createAsyncThunk<ISchema, string, { rejectValue: stri
 interface IResponseState {
   list: object;
   loading: boolean;
-  error: string | null;
+  errorSchema: string | null;
+  errorSchemaCheck: boolean;
 }
 
 interface ISchema {
@@ -47,29 +48,36 @@ interface ISchema {
 const initialState: IResponseState = {
   list: {},
   loading: false,
-  error: null,
+  errorSchema: null,
+  errorSchemaCheck: true,
 };
 
 export const schemaSlice = createSlice({
   name: 'schema',
   initialState,
-  reducers: {},
+  reducers: {
+    setErrorSchemaCheck: (state, action) => {
+      state.errorSchemaCheck = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSchema.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.errorSchema = null;
       })
       .addCase(fetchSchema.fulfilled, (state, action) => {
         state.list = action.payload;
         state.loading = false;
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
-        state.error = action.payload;
+        state.errorSchema = action.payload;
         state.loading = false;
       });
   },
 });
+
+export const { setErrorSchemaCheck } = schemaSlice.actions;
 
 export default schemaSlice.reducer;
 

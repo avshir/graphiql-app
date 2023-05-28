@@ -35,35 +35,43 @@ export const fetchData = createAsyncThunk<string, string, { rejectValue: string 
 interface IResponseState {
   list: string;
   loading: boolean;
-  error: string | null;
+  errorData: string | null;
+  errorDataCheck: boolean;
 }
 
 const initialState: IResponseState = {
   list: '',
   loading: false,
-  error: null,
+  errorData: null,
+  errorDataCheck: true,
 };
 
 export const apiSlice = createSlice({
   name: 'data',
   initialState,
-  reducers: {},
+  reducers: {
+    setErrorDataCheck: (state, action) => {
+      state.errorDataCheck = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchData.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.errorData = null;
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.list = action.payload;
         state.loading = false;
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
-        state.error = action.payload;
+        state.errorData = action.payload;
         state.loading = false;
       });
   },
 });
+
+export const { setErrorDataCheck } = apiSlice.actions;
 
 export default apiSlice.reducer;
 
