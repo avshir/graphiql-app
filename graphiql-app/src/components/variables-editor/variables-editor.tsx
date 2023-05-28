@@ -80,15 +80,15 @@ export default function VariablesEditor() {
             : { height: '6%', transition: 'height 0.3s' }
         }
       >
-        <button className="variables-btn card-title" onClick={handleClick}>
+        <button className="variables-btn btn btn-primary" onClick={handleClick}>
           Variables
         </button>
         <CodeMirror
           className="variables-editor"
           style={
             stateVariablesSection
-              ? { opacity: '1', transition: 'opacity 1.2s' }
-              : { opacity: '0', transition: 'opacity 0.1s' }
+              ? { opacity: '1', transition: 'opacity 1.5s' }
+              : { opacity: '0', transition: 'opacity 0.05s' }
           }
           value={content}
           theme={aura}
