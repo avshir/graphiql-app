@@ -1,14 +1,4 @@
-@keyframes pulse {
-  0% {
-    filter: brightness(1);
-  }
-  100% {
-    filter: brightness(0.6);
-  }
-}
-
 .request-editor {
-  height: 70%;
   width: 100%;
   padding: 0 10px;
   margin-bottom: 0 !important;
@@ -19,11 +9,9 @@
     position: absolute;
     top: 3px;
     right: 9px;
-    background: #6f42c1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: none;
     padding: 14px;
 
     .request-btn-icon {
@@ -34,19 +22,8 @@
     }
 
     .request-btn-name {
-      color: #e232b6;
       font-size: 18px;
-      font-weight: bold;
     }
-  }
-
-  .request-btn:hover {
-    animation: pulse 800ms infinite;
-  }
-
-  .request-btn:active {
-    filter: brightness(0) saturate(100%) invert(34%) sepia(41%) saturate(1796%) hue-rotate(232deg)
-      brightness(86%) contrast(100%);
   }
 
   .request-editor-textarea {
@@ -56,7 +33,6 @@
     background: none;
     color: var(--bs-body-color);
     border: none;
-    padding: 0 10px;
     outline: none;
     overflow: auto;
   }

@@ -6,6 +6,7 @@ import queryReducer from '../features/querySlice';
 import userReducer from '../features/slices/userSlice';
 import variablesReducer from '../features/slices/variablesSlice';
 import argumentsReducer from '../features/slices/argumentsSlice';
+import isOpenVariablesSectionReducer from '../features/slices/stateVariablesSectionSlice';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     user: userReducer,
     variables: variablesReducer,
     arguments: argumentsReducer,
+    isOpenVariablesSection: isOpenVariablesSectionReducer,
   },
 });
 

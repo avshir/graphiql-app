@@ -18,6 +18,9 @@ export default function RequestEditor() {
 
   const query: string = useAppSelector((state) => state.request.value);
   const variables: IVariables = useAppSelector((state) => state.variables.value);
+  const stateVariablesSection: boolean = useAppSelector(
+    (state) => state.isOpenVariablesSection.value
+  );
 
   const [requestQuery, setRequestQuery] = useState('');
 
@@ -57,9 +60,16 @@ export default function RequestEditor() {
   };
 
   return (
-    <div className="request-editor card border-dark mb-3">
+    <div
+      className="request-editor card border-dark mb-3"
+      style={
+        stateVariablesSection
+          ? { height: '70%', transition: 'height 0.3s' }
+          : { height: '94%', transition: 'height 0.3s' }
+      }
+    >
       <h5 className="header-section card-title">Operation</h5>
-      <button className="request-btn" onClick={handleClick}>
+      <button className="request-btn btn btn-primary" onClick={handleClick}>
         <span className="request-btn-icon"></span>
         <span className="request-btn-name">Run</span>
       </button>
