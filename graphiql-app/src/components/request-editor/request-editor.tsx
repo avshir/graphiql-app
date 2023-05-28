@@ -6,6 +6,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { aura } from '@uiw/codemirror-theme-aura';
 import { fetchData } from '../../features/apiSlice';
+import { setErrorDataCheck } from '../../features/apiSlice';
 
 interface IVariables {
   [key: string]: string;
@@ -23,6 +24,8 @@ export default function RequestEditor() {
   );
 
   const [requestQuery, setRequestQuery] = useState('');
+
+  const { errorDataCheck } = useAppSelector((state) => state.data);
 
   const handleChange = useCallback((value: string) => {
     setContent(value);
@@ -57,6 +60,9 @@ export default function RequestEditor() {
 
   const handleClick = async (): Promise<void> => {
     dispatch(fetchData(requestQuery));
+    if (!errorDataCheck) {
+      dispatch(setErrorDataCheck(true));
+    }
   };
 
   return (

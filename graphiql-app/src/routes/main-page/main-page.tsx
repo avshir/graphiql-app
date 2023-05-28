@@ -3,15 +3,30 @@ import RequestEditor from '../../components/request-editor';
 import ResponseSection from '../../components/response-section';
 import VariablesEditor from '../../components/variables-editor/variables-editor';
 import { Resizable } from 're-resizable';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import Spinner from '../../components/spinner';
+import Modal from '../../components/modal';
+import { useAppSelector } from '../../utils/hooks';
 
 export default function MainPage() {
   const DocumentationExplorer = lazy(() => import(`../../components/documentation-explorer`));
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { errorData, errorDataCheck } = useAppSelector((state) => state.data);
+  const { errorSchema, errorSchemaCheck } = useAppSelector((state) => state.schema);
+
+  useEffect(() => {
+    if (errorData && errorDataCheck) {
+      setModalOpen(true);
+    }
+    if (errorSchema && errorSchemaCheck) {
+      setModalOpen(true);
+    }
+  }, [errorData, errorDataCheck, errorSchema, errorSchemaCheck]);
 
   return (
     <>
       <div className="main-graphql-container container">
+        {isModalOpen && <Modal setModalOpen={setModalOpen} />}
         <div className="graphql-container">
           <Resizable
             className="documentation-explorer-container card border-dark mb-3"
