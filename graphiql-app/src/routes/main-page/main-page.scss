@@ -17,13 +17,13 @@
 
   .documentation-explorer-container {
     padding: 0 10px;
-    min-width: 300px;
+    min-width: 290px;
   }
 
   .request-editor-container {
     position: relative;
     flex-shrink: 1 !important;
-    min-width: 300px;
+    min-width: 290px;
     margin-bottom: 0;
   }
 
@@ -31,7 +31,7 @@
     flex-shrink: 1 !important;
     overflow-x: hidden;
     overflow-y: auto;
-    min-width: 300px;
+    min-width: 290px;
   }
 
   .response-section::-webkit-scrollbar {
