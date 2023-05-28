@@ -1,7 +1,7 @@
 import './header-style.scss';
 
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useTransform, motion, MotionValue } from 'framer-motion';
 import { useAppDispatch } from './../../utils/hooks';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -53,10 +53,14 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
     }
   };
 
+  const location = useLocation();
+  const visibleBtnToMain =
+    location.pathname === '/main' ? 'btn btn-secondary hide' : 'btn btn-secondary';
+
   const sighOutBtn = isAuth || isAuthLS ? <Sign handleClick={handlerSignOutBtn} /> : null;
   const authBtns =
     isAuth || isAuthLS ? (
-      <Link className="btn btn-secondary" to="/main" onClick={handleLinkClick}>
+      <Link className={visibleBtnToMain} to="/main" onClick={handleLinkClick}>
         {t('header.main')}
       </Link>
     ) : (
