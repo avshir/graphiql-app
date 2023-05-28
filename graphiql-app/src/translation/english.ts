@@ -13,7 +13,7 @@ const ENGLISH_LANG = {
   welcome: {
     project: {
       heading: 'about the project',
-      description: 'bla-bla-bla',
+      description: 'make a request and learn everything about continents, countries and languages',
     },
     course: {
       heading: 'rs school react course',
@@ -34,7 +34,7 @@ const ENGLISH_LANG = {
         obligations: {
           obl1: 'main design',
           obl2: 'localization',
-          obl3: 'error boundary',
+          obl3: 'error handling',
         },
       },
       creator3: {
@@ -48,6 +48,7 @@ const ENGLISH_LANG = {
     },
   },
   error: {
+    message: 'Not found',
     redirect: 'To main page',
   },
   buttons: {

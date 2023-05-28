@@ -2,7 +2,7 @@ const RUSSIAN_LANG = {
   header: {
     signOut: 'Выйти',
     signIn: 'Войти',
-    signUp: 'Зарегистрироваться',
+    signUp: 'Регистрация',
     main: 'На главную',
   },
   footer: {
@@ -13,7 +13,7 @@ const RUSSIAN_LANG = {
   welcome: {
     project: {
       heading: 'о проекте',
-      description: 'bla-bla-bla',
+      description: 'сделай запрос и узнай всё о континентах, странах и языках',
     },
     course: {
       heading: 'курс по react от rs school ',
@@ -48,6 +48,7 @@ const RUSSIAN_LANG = {
     },
   },
   error: {
+    message: 'Ничего не найдено',
     redirect: 'На главную',
   },
   buttons: {
