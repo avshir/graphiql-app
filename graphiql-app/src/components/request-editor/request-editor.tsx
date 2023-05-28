@@ -69,7 +69,7 @@ export default function RequestEditor() {
       }
     >
       <h5 className="header-section card-title">Operation</h5>
-      <button className="request-btn" onClick={handleClick}>
+      <button className="request-btn btn btn-primary" onClick={handleClick}>
         <span className="request-btn-icon"></span>
         <span className="request-btn-name">Run</span>
       </button>
