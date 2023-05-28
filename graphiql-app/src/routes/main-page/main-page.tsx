@@ -1,11 +1,14 @@
 import './main-page.scss';
 import RequestEditor from '../../components/request-editor';
-import DocumentationExplorer from '../../components/documentation-explorer';
 import ResponseSection from '../../components/response-section';
 import VariablesEditor from '../../components/variables-editor/variables-editor';
 import { Resizable } from 're-resizable';
+import { Suspense, lazy } from 'react';
+import Spinner from '../../components/spinner';
 
 export default function MainPage() {
+  const DocumentationExplorer = lazy(() => import(`../../components/documentation-explorer`));
+
   return (
     <>
       <div className="main-graphql-container container">
@@ -24,7 +27,9 @@ export default function MainPage() {
               topLeft: false,
             }}
           >
-            <DocumentationExplorer />
+            <Suspense fallback={<Spinner />}>
+              <DocumentationExplorer />
+            </Suspense>
           </Resizable>
 
           <Resizable
