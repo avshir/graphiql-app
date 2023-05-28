@@ -1,10 +1,11 @@
 import './main-page.scss';
 import RequestEditor from '../../components/request-editor';
 import ResponseSection from '../../components/response-section';
-import VariablesEditor from '../../components/variables-editor/variables-editor';
+import VariablesEditor from '../../components/variables-editor';
 import { Resizable } from 're-resizable';
 import { Suspense, lazy } from 'react';
 import Spinner from '../../components/spinner';
+import HeadersEditor from '../../components/headers-editor';
 
 export default function MainPage() {
   const DocumentationExplorer = lazy(() => import(`../../components/documentation-explorer`));
@@ -48,6 +49,7 @@ export default function MainPage() {
           >
             <RequestEditor />
             <VariablesEditor />
+            <HeadersEditor />
           </Resizable>
 
           <Resizable

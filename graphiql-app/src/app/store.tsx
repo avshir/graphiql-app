@@ -7,6 +7,7 @@ import userReducer from '../features/slices/userSlice';
 import variablesReducer from '../features/slices/variablesSlice';
 import argumentsReducer from '../features/slices/argumentsSlice';
 import isOpenVariablesSectionReducer from '../features/slices/stateVariablesSectionSlice';
+import isOpenHeadersSectionReducer from '../features/slices/stateHeadersSectionSlice';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     variables: variablesReducer,
     arguments: argumentsReducer,
     isOpenVariablesSection: isOpenVariablesSectionReducer,
+    isOpenHeadersSection: isOpenHeadersSectionReducer,
   },
 });
 
