@@ -19,6 +19,10 @@ export default function VariablesEditor() {
   const [currentVariables, setCurrentVariables] = useState({} as IVariables);
   const [isOpen, setOpen] = useState(false);
 
+  const stateVariablesSection: boolean = useAppSelector(
+    (state) => state.isOpenVariablesSection.value
+  );
+
   useEffect(() => {
     let queryArgs = '';
 
@@ -62,12 +66,16 @@ export default function VariablesEditor() {
     dispatch(setOpenState(isOpen));
   }, [dispatch, isOpen]);
 
+  useEffect(() => {
+    setOpen(stateVariablesSection);
+  }, [stateVariablesSection]);
+
   return (
     <>
       <div
         className="variables-editor-container card border-dark mb-3"
         style={
-          isOpen
+          stateVariablesSection
             ? { height: '30%', transition: 'height 0.3s' }
             : { height: '6%', transition: 'height 0.3s' }
         }
@@ -78,7 +86,7 @@ export default function VariablesEditor() {
         <CodeMirror
           className="variables-editor"
           style={
-            isOpen
+            stateVariablesSection
               ? { opacity: '1', transition: 'opacity 1.2s' }
               : { opacity: '0', transition: 'opacity 0.1s' }
           }
