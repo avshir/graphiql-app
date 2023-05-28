@@ -23,6 +23,8 @@ export default function RequestEditor() {
     (state) => state.isOpenVariablesSection.value
   );
 
+  const stateHeadersSection: boolean = useAppSelector((state) => state.isOpenHeadersSection.value);
+
   const [requestQuery, setRequestQuery] = useState('');
 
   const { errorDataCheck } = useAppSelector((state) => state.data);
@@ -69,9 +71,15 @@ export default function RequestEditor() {
     <div
       className="request-editor card border-dark mb-3"
       style={
-        stateVariablesSection
-          ? { height: '70%', transition: 'height 0.3s' }
-          : { height: '94%', transition: 'height 0.3s' }
+        stateVariablesSection && !stateHeadersSection
+          ? { height: '64%', transition: 'height 0.3s' }
+          : stateHeadersSection && !stateVariablesSection
+          ? { height: '79%', transition: 'height 0.3s' }
+          : !stateVariablesSection
+          ? { height: '88%', transition: 'height 0.3s' }
+          : stateVariablesSection && stateHeadersSection
+          ? { height: '55%', transition: 'height 0.3s' }
+          : {}
       }
     >
       <h5 className="header-section card-title">Operation</h5>
