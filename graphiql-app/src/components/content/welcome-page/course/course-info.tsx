@@ -14,7 +14,7 @@ export default function Course() {
           <p>{t('welcome.course.description')}</p>
         </div>
         <div className="course-info-logo">
-          <img src={reactIcon} alt="earth" />
+          <img src={reactIcon} width="112" alt="earth" />
         </div>
       </div>
     </section>

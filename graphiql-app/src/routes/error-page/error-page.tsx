@@ -8,7 +8,7 @@ export default function ErrorPage() {
   return (
     <div className="error-page">
       <div className="container">
-        <h1 className="text-center text-warning">ErrorPage</h1>
+        <h1 className="text-center text-warning">{t('error.message')}</h1>
         <div className="m-5 text-center">
           <NavLink className="btn btn-secondary" to="/main">
             {t('error.redirect')}

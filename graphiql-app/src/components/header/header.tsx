@@ -1,9 +1,11 @@
 import './header-style.scss';
 
-import { NavLink, useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useTransform, motion, MotionValue } from 'framer-motion';
 import { useAppDispatch } from './../../utils/hooks';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useTranslation } from 'react-i18next';
 
 import Logo from './logo';
 import Sign from './sign';
@@ -11,8 +13,8 @@ import Localization from './localization';
 import { useAuth } from '../../hooks/use-auth';
 import { removeUser } from '../../features/slices/userSlice';
 import { HEADER_HIGHT } from '../../utils/animation-data';
-
 import AlertMessage from '../error';
+import useResize from '../../hooks/use-resize';
 
 interface HeaderProps {
   scrollY: MotionValue<number>;
@@ -21,30 +23,49 @@ interface HeaderProps {
 
 export default function Header({ scrollY, offsetY }: HeaderProps) {
   const height = useTransform(scrollY, offsetY, HEADER_HIGHT);
+  const { t } = useTranslation();
 
   const isAuthLS: string = localStorage.getItem('userIsAuth') || '';
   const { isAuth } = useAuth();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const [isBurgerOpen, setBurgerOpen] = useState(false);
+  const handleBurgerClick = () => {
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    } else {
+      setBurgerOpen(true);
+    }
+  };
+
   const handlerSignOutBtn = () => {
     dispatch(removeUser());
     navigate('/welcome');
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    }
+  };
+
+  const handleLinkClick = () => {
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    }
   };
 
   const sighOutBtn = isAuth || isAuthLS ? <Sign handleClick={handlerSignOutBtn} /> : null;
   const authBtns =
     isAuth || isAuthLS ? (
-      <Link className="btn btn-secondary" to="/main">
-        Main page
+      <Link className="btn btn-secondary" to="/main" onClick={handleLinkClick}>
+        {t('header.main')}
       </Link>
     ) : (
       <>
-        <Link className="btn btn-outline-secondary" to="/login">
-          Sign In
+        <Link className="btn btn-outline-secondary" to="/login" onClick={handleLinkClick}>
+          {t('header.signIn')}
         </Link>
-        <Link className="btn btn-outline-secondary" to="/register">
-          Sign Up
+        <Link className="btn btn-outline-secondary" to="/register" onClick={handleLinkClick}>
+          {t('header.signUp')}
         </Link>
       </>
     );
@@ -52,26 +73,41 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
   return (
     <motion.header className="header navbar-dark bg-primary" style={{ height }}>
       <ErrorBoundary FallbackComponent={AlertMessage}>
-        <div className="header-content container">
+        <div className="header-content">
           <Logo />
-          <div className="header-btns">
-            <nav className="nav">
-              {authBtns}
-              {sighOutBtn}
-            </nav>
-            <Localization />
-          </div>
+          {useResize() ? (
+            <>
+              <Localization />
+              <div className="header-btns">
+                <nav className="nav">
+                  {authBtns}
+                  {sighOutBtn}
+                </nav>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                className={`burger-icon ${isBurgerOpen ? 'open' : ''}`}
+                onClick={handleBurgerClick}
+              >
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+              </div>
+              <div className={`burger-menu ${isBurgerOpen ? 'open' : ''}`}>
+                <div className="burger-btns">
+                  <nav className="nav">
+                    {authBtns}
+                    {sighOutBtn}
+                  </nav>
+                </div>
+                <Localization />
+              </div>
+            </>
+          )}
         </div>
       </ErrorBoundary>
-      {/* TODO => delete when project is complete */}
-      <nav className={'nav-menu container'}>
-        <NavLink className={'nav-page'} to="/welcome">
-          Welcome
-        </NavLink>
-        <NavLink className={'nav-page'} to="/main">
-          Main
-        </NavLink>
-      </nav>
     </motion.header>
   );
 }

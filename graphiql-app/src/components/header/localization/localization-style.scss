@@ -5,11 +5,10 @@ $basic-transition: all 0.3s linear;
 }
 
 .header-dropdown {
-  width: 45px;
+  width: 50px;
   cursor: pointer;
 
   img {
-    width: 100%;
     filter: invert(49%) sepia(94%) saturate(5188%) hue-rotate(294deg) brightness(96%) contrast(91%)
       drop-shadow(0 0 2px rgba(234, 57, 184, 0.9));
     transition: $basic-transition;
@@ -26,7 +25,7 @@ $basic-transition: all 0.3s linear;
 }
 
 .dropdown-menu {
-  right: 0;
+  right: -55px;
 }
 
 .dropdown-item {
