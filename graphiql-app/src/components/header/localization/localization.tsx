@@ -34,7 +34,7 @@ export default function Localization() {
   return (
     <div className="header-localization">
       <div className="header-dropdown dropdown-toggle" onClick={handleLangOpen}>
-        <img src={langIcon} alt="tongue" />
+        <img src={langIcon} width="50" alt="tongue" />
       </div>
       <div className={`dropdown-menu ${isLangOpen ? 'show' : ''}`} onClick={handleLangSwitch}>
         <input
