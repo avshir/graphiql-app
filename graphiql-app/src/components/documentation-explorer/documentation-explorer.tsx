@@ -120,7 +120,6 @@ export default function DocumentationExplorer() {
     setStateClick(false);
 
     const queries = [];
-    // const queryArgs = [];
 
     for (const category in query) {
       let categoryWithArgument = category;
@@ -130,7 +129,6 @@ export default function DocumentationExplorer() {
 
         if (nameArgument) {
           categoryWithArgument = `${category}(code: $${nameArgument})`;
-          // queryArgs.push(`$${nameArgument}: ID!`);
         }
       }
 

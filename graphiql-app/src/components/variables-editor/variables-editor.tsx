@@ -6,6 +6,7 @@ import { IQueryRequest } from '../documentation-explorer/explorer-types';
 import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
 import { aura } from '@uiw/codemirror-theme-aura';
+import { setOpenState } from '../../features/slices/stateVariablesSectionSlice';
 
 interface IVariables {
   [key: string]: string;
@@ -16,6 +17,7 @@ export default function VariablesEditor() {
   const args = useAppSelector((state) => state.arguments.value) as IQueryRequest;
   const [content, setContent] = useState('');
   const [currentVariables, setCurrentVariables] = useState({} as IVariables);
+  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     let queryArgs = '';
@@ -52,12 +54,34 @@ export default function VariablesEditor() {
     setCurrentVariables(variablesObj);
   }, []);
 
+  const handleClick = () => {
+    setOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    dispatch(setOpenState(isOpen));
+  }, [dispatch, isOpen]);
+
   return (
     <>
-      <div className="variables-editor-container card border-dark mb-3">
-        <h5 className="header-section card-title">Variables</h5>
+      <div
+        className="variables-editor-container card border-dark mb-3"
+        style={
+          isOpen
+            ? { height: '30%', transition: 'height 0.3s' }
+            : { height: '6%', transition: 'height 0.3s' }
+        }
+      >
+        <button className="variables-btn card-title" onClick={handleClick}>
+          Variables
+        </button>
         <CodeMirror
           className="variables-editor"
+          style={
+            isOpen
+              ? { opacity: '1', transition: 'opacity 1.2s' }
+              : { opacity: '0', transition: 'opacity 0.1s' }
+          }
           value={content}
           theme={aura}
           extensions={[json()]}
