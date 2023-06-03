@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 export default function App() {
   const location = useLocation();
 
-  const [isLogget, setLogget] = useState(false);
+  const [isLogget, setLogget] = useState(true);
   const [page, setPage] = useState('');
 
   useEffect(() => {
