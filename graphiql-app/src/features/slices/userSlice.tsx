@@ -27,8 +27,8 @@ export const userSlice = createSlice({
       state.email = null;
       state.token = null;
       state.id = null;
-      localStorage.setItem('userIsAuth', '');
-      localStorage.setItem('email', '');
+      localStorage.removeItem('userIsAuth');
+      localStorage.removeItem('email');
     },
   },
 });

@@ -40,6 +40,7 @@ export default function Header({ scrollY, offsetY }: HeaderProps) {
   };
 
   const handlerSignOutBtn = () => {
+    localStorage.removeItem('page');
     dispatch(removeUser());
     navigate('/welcome');
     if (isBurgerOpen) {
