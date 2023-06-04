@@ -16,7 +16,6 @@ export default function MainPage() {
   const { errorSchema, errorSchemaCheck } = useAppSelector((state) => state.schema);
 
   useEffect(() => {
-    console.log('main');
     if (errorData && errorDataCheck) {
       setModalOpen(true);
     }
