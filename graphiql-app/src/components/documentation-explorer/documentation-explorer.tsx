@@ -175,6 +175,7 @@ export default function DocumentationExplorer() {
                           data-queryname={queryName as keyof typeof apiDatas}
                           onChange={handlerInputArguments}
                           value="code"
+                          name="query-name"
                         />
                         code: <span className="type-fields-string">String</span>
                       </label>
@@ -201,6 +202,7 @@ export default function DocumentationExplorer() {
                               data-queryname={queryName as keyof typeof apiDatas}
                               onChange={handlerInput}
                               value={data.name}
+                              name="query-name"
                             />
                             {data.name}:{' '}
                             {data.name === 'countries' ? (

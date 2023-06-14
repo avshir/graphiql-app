@@ -30,10 +30,11 @@ const Login = () => {
             id: user.uid,
           })
         );
+
+        localStorage.setItem('page', 'main');
         navigate('/main');
       })
       .catch((error) => {
-        console.log(error.code);
         setError(true);
 
         if (error.code === 'auth/wrong-password') {

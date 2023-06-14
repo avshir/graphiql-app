@@ -3,14 +3,14 @@ import RequestEditor from '../../components/request-editor';
 import ResponseSection from '../../components/response-section';
 import VariablesEditor from '../../components/variables-editor';
 import { Resizable } from 're-resizable';
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Spinner from '../../components/spinner';
 import HeadersEditor from '../../components/headers-editor';
 import Modal from '../../components/modal';
 import { useAppSelector } from '../../utils/hooks';
+import DocumentationExplorer from '../../components/documentation-explorer';
 
 export default function MainPage() {
-  const DocumentationExplorer = lazy(() => import(`../../components/documentation-explorer`));
   const [isModalOpen, setModalOpen] = useState(false);
   const { errorData, errorDataCheck } = useAppSelector((state) => state.data);
   const { errorSchema, errorSchemaCheck } = useAppSelector((state) => state.schema);
