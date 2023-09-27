@@ -19,6 +19,6 @@ The app built using following components:
 - Code Mirror to create a code editor.
 
 Contributors: 
-[avshir](https://github.com/avshir)
-[Tatiana-Shylovich](https://github.com/Tatiana-Shylovich)
+[avshir](https://github.com/avshir),
+[Tatiana-Shylovich](https://github.com/Tatiana-Shylovich),
 [dns147](https://github.com/dns147)
