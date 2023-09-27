@@ -17,3 +17,8 @@ The app built using following components:
 - Framer Motion for animation.
 - React Spring to create a UI list of elements.
 - Code Mirror to create a code editor.
+
+Contributors: 
+avshir [https://github.com/avshir]
+Tatiana-Shylovich [https://github.com/Tatiana-Shylovich]
+dns147 [https://github.com/dns147]
