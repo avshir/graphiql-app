@@ -2,7 +2,7 @@
 
 This is GraphQL API app for information about countries, continents, and languages.
 
-[graphiql-countries-rsschool](https://graphiql-countries-rsschool.netlify.app/)
+[Demo: graphiql-countries-rsschool](https://graphiql-countries-rsschool.netlify.app/)
 
 The app built using following components:
 
