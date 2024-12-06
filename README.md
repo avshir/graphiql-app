@@ -22,3 +22,12 @@ Contributors:
 [avshir](https://github.com/avshir),
 [Tatiana-Shylovich](https://github.com/Tatiana-Shylovich),
 [dns147](https://github.com/dns147)
+
+![image](https://github.com/user-attachments/assets/358d15f9-b11d-4b80-afbc-4b01c77127e6)
+![image](https://github.com/user-attachments/assets/b9f5a375-d8b7-4560-82fc-cdba24cbe332)
+![image](https://github.com/user-attachments/assets/1db9621f-8296-48ea-a965-74de00542214)
+
+
+
+
+
